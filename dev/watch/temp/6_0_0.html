@@ -2,17 +2,27 @@
 <html lang="jp">
 <head>
 <title>Watch://Timer</title>
+<script>
+  const COOKIE = new Map (
+    document.cookie.split( '; ' ).map(x => {
+      return x.split( '=' );
+    })
+  );
+
+  COOKIE.set = function(key, value) {
+    throw Error('This map was freezed.');
+  };
+
+</script>
 <style>
 .area > input:checked + label {
   font-weight: bold;
-
-  }
+}
 
 *{
   margin:0;
   padding:0;
   line-height:1.3;
-
 }
 
 .area {
@@ -20,17 +30,17 @@
   margin: auto;
   flex-wrap: wrap;
   display: flex;
- font-size: 11px;
-   	background-color: var(--bgColor);
+  font-size: 11px;
+  background-color: var(--bgColor);
 }
 .takami{
-	height: 100%;
-	   	background-color: var(--bgColor);
+  height: 100%;
+  background-color: var(--bgColor);
 }
  
 .tab_class {
   z-index: 100;
-  	background-color: var(--bgColor);
+  background-color: var(--bgColor);
   position: sticky;
   top: 0;
   width: calc(100%/3);
@@ -41,28 +51,25 @@
   display: block;
   float: left;
   order: -1;
-  }
- 
+}
+
 input[name="tab_name"] {
   display: none;
 }
- 
-input:checked + .tab_class {
-}
- 
+
 .content_class {
   display: none;
   width: 100%;
 }
- 
+
 input:checked + .tab_class + .content_class {
   display: block;
 }
+
 html {
   font-family: 'Lato';
   font-size: 16px;
-    	background-color: var(--bgColor);
-
+  background-color: var(--bgColor);
 }
 
 
@@ -81,61 +88,61 @@ html {
 }
 
 details {
-	border: 0px solid #aaa;
-  	border-radius: 4px;
-  	padding: 0.5em 0.5em 0;
-	}
+  border: 0px solid #aaa;
+   border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+}
 
 summary {
-	margin: -0.5em -0.5em 0;
-	padding: 0.5em;
-	list-style:none;
-	}
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+  list-style:none;
+}
 
 details[open] {
-  	padding: 0.5em;
-	background-color:#79797988;
-	}
+  padding: 0.5em;
+  background-color:#79797988;
+}
 
 details[open] summary {
- 	border-bottom: 0px solid #aaa;
-  	margin-bottom: 0.5em;
-	}
+   border-bottom: 0px solid #aaa;
+  margin-bottom: 0.5em;
+}
 
 .details-contents{
-	height: 340px;
-	margin:5px;
-	position: absolute;
-	bottom: 0;
-　}
+  height: 340px;
+  margin:5px;
+  position: absolute;
+  bottom: 0;
+}
 
 .button-sousyoku{
-	color: var(--mainColor);
-	background-color: var(--bgColor);
-	padding: 5px;
-	margin: 3px;
-   border-radius: 5px;
-	font-size: 18px;
-   }
-	
-.button-select{
-	color: var(--mainColor);
-	background-color: var(--bgColor);
-	padding: 15px;
-	margin: 3px;
-   border-radius: 3px;
-	font-size: 2vw;
-   }
+  color: var(--mainColor);
+  background-color: var(--bgColor);
+  padding: 5px;
+  margin: 3px;
+  border-radius: 5px;
+  font-size: 18px;
+}
 
-	
+.button-select{
+  color: var(--mainColor);
+  background-color: var(--bgColor);
+  padding: 15px;
+  margin: 3px;
+  border-radius: 3px;
+  font-size: 2vw;
+}
+
+  
 .button-select-a{
-	color: var(--bgColor);
-	background-color: var(--mainColor);
-	padding: 5px;
-	margin: 3px;
-   border-radius: 5px;
-	font-size: 18px;
-   }
+  color: var(--bgColor);
+  background-color: var(--mainColor);
+  padding: 5px;
+  margin: 3px;
+  border-radius: 5px;
+  font-size: 18px;
+}
 
 .tempo {
   zoom: 1;
@@ -150,8 +157,7 @@ details[open] summary {
   text-align: center;
   padding: 1rem;
   margin: .5rem;
-  	background-color: var(--bgColor);
-
+  background-color: var(--bgColor);
 }
 
 .timer-contents-a{
@@ -165,70 +171,67 @@ details[open] summary {
   font-size: 24px;
   text-align: center;
   color: var(--mainColor);
-	padding: 5px;
-	margin: 3px;
-	
+  padding: 5px;
+  margin: 3px;
 }
 
 
 .summary-contents{
- font-size: 24px;
-
+  font-size: 24px;
 }
 
 .ranges{
-	width: 200px;
-	height:auto;
-   appearance:none;
-   height: 5px;
-	border-radius: 3px;
-	background-color: var(--mainColor);
-   margin: 5px;
+  width: 200px;
+  height:auto;
+  appearance:none;
+  height: 5px;
+  border-radius: 3px;
+  background-color: var(--mainColor);
+  margin: 5px;
 }
 
 .ranges::-webkit-slider-thumb {
-        appearance:none;
-     	  background-color: var(--mainColor);
-        width:15px; 
-        height:15px;
-        border-radius:50%; 
-    }
-	
+  appearance:none;
+  background-color: var(--mainColor);
+  width:15px; 
+  height:15px;
+  border-radius:50%; 
+}
+  
 .a-contents{
-	color: var(--mainColor);
-	background-color: var(--bgColor);
-  	border-radius: 4px;
-	margin: 4px;
-	padding: 4px;
-
+  color: var(--mainColor);
+  background-color: var(--bgColor);
+  border-radius: 4px;
+  margin: 4px;
+  padding: 4px;
 } 
 
 .a-contents-button{
-	color: var(--mainColor);
-	height: 40px;
-	margin: 4px;
-	padding: 4px;
-} 
+  color: var(--mainColor);
+  height: 40px;
+  margin: 4px;
+  padding: 4px;
+}
 
 
 .date-contents{
- font-family: 'Lato';
- font-weight: middle;
- font-size: 3vw;
+  font-family: 'Lato';
+  font-weight: middle;
+  font-size: 3vw;
 }
 
 .input-tag{
- width: 30px;
- color: var(--mainColor);
-	background-color: var(--bgColor);
-  	border-radius: 4px;
-	padding: 5px;
-	margin: 3px;
+  width: 30px;
+  color: var(--mainColor);
+  background-color: var(--bgColor);
+  border-radius: 4px;
+  padding: 5px;
+  margin: 3px;
 }
 
 .svg-settings{
- height: 20px;
-   z-index: 100;
+  height: 20px;
+  z-index: 100;
   position: sticky;
   top: 0;
   height:  30px;
@@ -243,11 +246,11 @@ details[open] summary {
 </head>
 
 <body class="tempo">
-<div class="takami">
-<div class="area">
-<input type="radio" name="tab_name" id="tab1"  >
-<label class="tab_class" for="tab1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 300.00 300.00"  class="svg-settings">
-<g stroke-width="2.00" fill="none" stroke-linecap="butt">
+  <div class="takami">
+    <div class="area">
+      <input type="radio" name="tab_name" id="tab1"  >
+      <label class="tab_class" for="tab1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 300.00 300.00"  class="svg-settings">
+        <g stroke-width="2.00" fill="none" stroke-linecap="butt">
 <path stroke=" var(--mainColor)" vector-effect="non-scaling-stroke" d="
   M 166.96 67.45
   C 170.25 67.80 174.70 66.96 174.73 63.00
@@ -680,104 +683,109 @@ details[open] summary {
   A 6.97 6.97 0.0 0 0 156.97 164.93
   Z"
 />
-<circle fill= var(--bgColor) cx="150.00" cy="164.93" r="6.97"/>
-</svg> StopWatch</label>
-<div class="content_class">
-  <div  class="timer-contents">
-  <center>
-    <span id="time" class="timer-contents">00:00:00</span><span id="mtime" class="timer-contents-a">.000</span>
-	 <!--<span class="timer-contents-a">.000</span>-->
-	 </center>
-	 </div>
-    <div id="buttons">
-      <input id="start" type="button" value="start" class="button-select">
-      <input id="stop" type="button" value="stop" class="button-select" disabled>
-      <input id="reset" type="button" value="reset" class="button-select" disabled>
-    </div>
-   	     <center><input id="rap" type="button" value="lap" class="button-select-a" disabled>
-<span id="rtime" class="timer-contents-b">00:00:00.000</span></center>
-<script>
-const time = document.getElementById('time');
-const startButton = document.getElementById('start');
-const stopButton = document.getElementById('stop');
-const resetButton = document.getElementById('reset');
-const rapButton = document.getElementById('rap');
+        <circle fill= var(--bgColor) cx="150.00" cy="164.93" r="6.97"/>
+      </svg> StopWatch</label>
+      <div class="content_class">
+        <div  class="timer-contents">
+          <center>
+            <span id="time" class="timer-contents">00:00:00</span><span id="mtime" class="timer-contents-a">.000</span>
+            <!--<span class="timer-contents-a">.000</span>-->
+          </center>
+        </div>
+        <div id="buttons">
+          <input id="start" type="button" value="start" class="button-select">
+          <input id="stop" type="button" value="stop" class="button-select" disabled>
+          <input id="reset" type="button" value="reset" class="button-select" disabled>
+        </div>
+        <center>
+          <input id="rap" type="button" value="lap" class="button-select-a" disabled>
+          <span id="rtime" class="timer-contents-b">00:00:00.000</span></center>
+          <script>
+  const time = document.getElementById('time');
+  const startButton = document.getElementById('start');
+  const stopButton = document.getElementById('stop');
+  const resetButton = document.getElementById('reset');
+  const rapButton = document.getElementById('rap');
 
-// 開始時間
-let startTime;
-// 停止時間
-let stopTime = 0;
-// タイムアウトID
-let timeoutID;
+  // 開始時間
+  let startTime;
+  // 停止時間
+  let stopTime = 0;
+  // タイムアウトID
+  let timeoutID;
 
-// 時間を表示する関数
-function displayTime() {
-  const currentTime = new Date(Date.now() - startTime + stopTime);
-  const h = String(currentTime.getHours()-9).padStart(2, '0');
-  const m = String(currentTime.getMinutes()).padStart(2, '0');
-  const s = String(currentTime.getSeconds()).padStart(2, '0');
-  const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
+  // 時間を表示する関数
+  function displayTime() {
+    const currentTime = new Date(Date.now() - startTime + stopTime);
+    const h = String(currentTime.getHours()-9).padStart(2, '0');
+    const m = String(currentTime.getMinutes()).padStart(2, '0');
+    const s = String(currentTime.getSeconds()).padStart(2, '0');
+    const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
 
-  time.textContent = `${h}:${m}:${s}`;
-  mtime.textContent = `.${ms}`;
-  timeoutID = setTimeout(displayTime, 10);
-}
+    time.textContent = `${h}:${m}:${s}`;
+    mtime.textContent = `.${ms}`;
+    timeoutID = setTimeout(displayTime, 10);
+  }
 
-// スタートボタンがクリックされたら時間を進める
-startButton.addEventListener('click', () => {
-  startButton.disabled = true;
-  stopButton.disabled = false;
-  resetButton.disabled = true;
+  // スタートボタンがクリックされたら時間を進める
+  startButton.addEventListener('click', () => {
+    startButton.disabled = true;
+    stopButton.disabled = false;
+    resetButton.disabled = true;
     rapButton.disabled = false;
-  startTime = Date.now();
-  displayTime();
-});
+    if(COOKIE.get('stopwatch')){
+      startTime = +COOKIE.get('stopwatch');
+    } else {
+      startTime = Date.now();
+      document.cookie = 'stopwatch=' + startTime;
+    }
+    displayTime();
+  });
 
-// ストップボタンがクリックされたら時間を止める
-stopButton.addEventListener('click', function() {
-  startButton.disabled = false;
-  stopButton.disabled = true;
-  resetButton.disabled = false;
+  // ストップボタンがクリックされたら時間を止める
+  stopButton.addEventListener('click', function() {
+    startButton.disabled = false;
+    stopButton.disabled = true;
+    resetButton.disabled = false;
     rapButton.disabled = true;
-  clearTimeout(timeoutID);
-  stopTime += (Date.now() - startTime);
-});
+    clearTimeout(timeoutID);
+    stopTime += (Date.now() - startTime);
+  });
 
-// リセットボタンがクリックされたら時間を0に戻す
-resetButton.addEventListener('click', function() {
-  startButton.disabled = false;
-  stopButton.disabled = true;
-  resetButton.disabled = true;
+  // リセットボタンがクリックされたら時間を0に戻す
+  resetButton.addEventListener('click', function() {
+    startButton.disabled = false;
+    stopButton.disabled = true;
+    resetButton.disabled = true;
     rapButton.disabled = true;
-  mtime.textContent = '.000';
-  time.textContent = '00:00:00';
-  rtime.textContent = '00:00:00.000'
-  stopTime = 0;
-});
+    mtime.textContent = '.000';
+    time.textContent = '00:00:00';
+    rtime.textContent = '00:00:00.000'
+    stopTime = 0;
+  });
 
-rapButton.addEventListener('click', function() {
-  startButton.disabled = true;
-  stopButton.disabled = false;
-  resetButton.disabled = true;
-  rapButton.disabled = false;
-  const currentTime = new Date(Date.now() - startTime + stopTime);
-  const h = String(currentTime.getHours()-9).padStart(2, '0');
-  const m = String(currentTime.getMinutes()).padStart(2, '0');
-  const s = String(currentTime.getSeconds()).padStart(2, '0');
-  const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
+  rapButton.addEventListener('click', function() {
+    startButton.disabled = true;
+    stopButton.disabled = false;
+    resetButton.disabled = true;
+    rapButton.disabled = false;
 
-  rtime.textContent = `${h}:${m}:${s}.${ms}`;
-});
+    const currentTime = new Date(Date.now() - startTime + stopTime);
+    const h = String(currentTime.getHours()-9).padStart(2, '0');
+    const m = String(currentTime.getMinutes()).padStart(2, '0');
+    const s = String(currentTime.getSeconds()).padStart(2, '0');
+    const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
 
+    rtime.textContent = `${h}:${m}:${s}.${ms}`;
+  });
 
-</script>
-</div>
-
-<input type="radio" name="tab_name" id="tab2" checked>
-<label class="tab_class" for="tab2"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 300.00 300.00"  class="svg-settings">
-<g stroke-width="2.00" fill="none" stroke-linecap="butt">
+          </script>
+        </div>
+        <input type="radio" name="tab_name" id="tab2" checked>
+        <label class="tab_class" for="tab2"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 300.00 300.00"  class="svg-settings">
+            <g stroke-width="2.00" fill="none" stroke-linecap="butt">
 <path stroke= var(--mainColor) vector-effect="non-scaling-stroke" d="
   M 256.97 150.00
   A 106.97 106.97 0.0 0 0 150.00 43.03
@@ -963,7 +971,7 @@ rapButton.addEventListener('click', function() {
   A 3.98 3.77 86.5 0 0 146.4670 228.2602
   A 3.98 3.77 86.5 0 0 150.4730 232.0026"
 />
-</g>
+          </g>
 <path fill= var(--bgColor) d="
   M 0.00 0.00
   L 300.00 0.00
@@ -1272,56 +1280,54 @@ rapButton.addEventListener('click', function() {
   Z"
 />
 <ellipse fill= var(--bgColor) cx="0.00" cy="0.00" transform="translate(150.23,228.03) rotate(86.5)" rx="3.98" ry="3.77"/>
-</svg> Watch</label>
-<div class="content_class">
-		<div id="myClock" align="center"  class="timer-contents">
-	<script>
-	function updateClock() {
-		var now = new Date();
-		var hour = now.getHours();
-		var minute = now.getMinutes();
-		var second = now.getSeconds();
-		if ( hour < 10 ) hour = "0" + hour;
-		if ( minute < 10 ) minute = "0" + minute;
-		if ( second < 10 ) second = "0" + second;
-		document.getElementById('myClock').innerHTML = hour+":"+minute+":"+second;
-	}
-	
-	function start() {
-		setInterval("updateClock();", 1000);
-		updateClock();
-		//	document.getElementById("osareta").click();
-	}
+        </svg> Watch</label>
+        <div class="content_class">
+          <div id="myClock" align="center"  class="timer-contents">
+            <script>
+  function updateClock() {
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
 
+    if ( hour < 10 ) hour = "0" + hour;
+    if ( minute < 10 ) minute = "0" + minute;
+    if ( second < 10 ) second = "0" + second;
 
-	function changeColor(main, bg){
-		document.body.style.setProperty('--mainColor', main);
-		document.body.style.setProperty('--bgColor', bg);
-	}
+    document.getElementById('myClock').innerHTML = hour+":"+minute+":"+second;
+  }
 
+  function start() {
+    setInterval("updateClock();", 1000);
+    updateClock();
+    //  document.getElementById("osareta").click();
+  }
 
-	start()
-	</script>
-	</div>
-	<div class="date-contents">
-		<p style="text-align:center">
-			<script>
-				var today=new Date(); 
-				var year = today.getFullYear();
-				var month = today.getMonth()+1;
-				var week = today.getDay();
-				var day = today.getDate();
-				var week_ja= new Array("日","月","火","水","木","金","土");
-				document.write(year+" "+month+"/"+day+" "+week_ja[week]+"");
-			</script>
-		</p>
-	</div>
-	
-	
-	</div>
-<input type="radio" name="tab_name" id="tab3"  >
-<label class="tab_class" for="tab3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-settings"  viewBox="0.00 0.00 300 300">
-<g stroke-width="2.00" fill="none" stroke-linecap="butt">
+  function changeColor(main, bg){
+    document.body.style.setProperty('--mainColor', main);
+    document.body.style.setProperty('--bgColor', bg);
+  }
+
+  start();
+            </script>
+          </div>
+          <div class="date-contents">
+            <p style="text-align:center">
+              <script>
+        var today=new Date(); 
+        var year = today.getFullYear();
+        var month = today.getMonth()+1;
+        var week = today.getDay();
+        var day = today.getDate();
+        var week_ja= new Array("日","月","火","水","木","金","土");
+        document.write(year+" "+month+"/"+day+" "+week_ja[week]+"");
+              </script>
+            </p>
+          </div>
+        </div>
+        <input type="radio" name="tab_name" id="tab3">
+        <label class="tab_class" for="tab3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-settings"  viewBox="0.00 0.00 300 300">
+          <g stroke-width="2.00" fill="none" stroke-linecap="butt">
 <path stroke= var(--mainColor) vector-effect="non-scaling-stroke" d="
   M 93.75 77.48
   Q 93.43 77.16 93.75 76.83
@@ -1547,215 +1553,244 @@ rapButton.addEventListener('click', function() {
   Q 148.73 140.71 149.15 140.34
   Z"
 />
-</svg> Timer</label>
-<div class="content_class">
-<div class="timer-contents">
-<div  id="largehour" class="time_display"style="display: inline-block; _display: inline;"><span id="hour_display">00</span>
-</div>:<div id="largeminute"class="time_display"style="display: inline-block; _display: inline;"><span id="minute_display">00</span>
-</div>:<div id="largesecond" class="time_display"style="display: inline-block; _display: inline;"><span id="second_display">30</span>
-</div>
-</div>
-<center>
-<input type="button" id="start_button" value="start" class="button-select" onclick="start()" >
-<input type="button" id="stop_button" value="stop" class="button-select" onclick="stop()" disabled>
-<input type="button" id="reset_button" value="reset" class="button-select" onclick="reset()" disabled>
-</center>
-
-<center>
-<div>
-<div id="bargroup">
-<div class="time"><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag"  ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div>
-<div class="time"><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1"  value="0" class="ranges"/></div>
-<div class="time"><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/><br><br></div>
-</div>
-
-</div>
-    </center>
-<script>
+        </svg> Timer</label>
+        <div class="content_class">
+          <div class="timer-contents">
+            <div  id="largehour" class="time_display"style="display: inline-block; _display: inline;"><span id="hour_display">00</span>
+          </div>:<div id="largeminute"class="time_display"style="display: inline-block; _display: inline;"><span id="minute_display">00</span>
+          </div>:<div id="largesecond" class="time_display"style="display: inline-block; _display: inline;"><span id="second_display">30</span>
+          </div>
+        </div>
+        <center>
+          <input type="button" id="start_button" value="start" class="button-select" onclick="start()" >
+          <input type="button" id="stop_button" value="stop" class="button-select" onclick="stop()" disabled>
+          <input type="button" id="reset_button" value="reset" class="button-select" onclick="reset()" disabled>
+        </center>
+        <center>
+          <div>
+            <div id="bargroup">
+              <div class="time"><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag"  ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div>
+              <div class="time"><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1"  value="0" class="ranges"/></div>
+              <div class="time"><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/><br><br></div>
+            </div>
+          </div>
+        </center>
+        <script>
   var time2 = document.getElementsByClassName('time');
   var time_display=document.getElementsByClassName("time_display");
   function rangeValue(time, target, target2) {
-	    return function(){
-         if(+time.value > +time.max){
-               time.value = time.max;
-         }else if(+time.value < 0){
-               time.value = 0;
-         }else {
-               time.value ^= 0;
-         }
+    return function(){
 
-         target.value = time.value;
-         target2.innerHTML = ('0' + time.value).slice(-2)
+      if(+time.value > +time.max){
+        time.value = time.max;
+      } else if(+time.value < 0){
+        time.value = 0;
+      } else {
+        time.value ^= 0;
       }
-  }
-  for(var i = 0; i<time2.length;i++){
-      num=time2[i].getElementsByTagName("input")[0];
-      bar=time2[i].getElementsByTagName("input")[1];
-      target=time_display[i].getElementsByTagName("span")[0];
-      num.addEventListener("input",rangeValue(num,bar,target));
-      bar.addEventListener("input",rangeValue(bar,num,target));
-  }
-        
-        function timeAll(){
-            console.log("do")
-            var hour_all = document.getElementById("hour").value;
-            var minute_all = document.getElementById("minute").value;
-            var second_all = document.getElementById("second").value;
-            var all = Number(hour_all*3600)+Number(minute_all*60)+Number(second_all);
-            return all;
-        }
-        
-        var ontheway = false;
-        var onthewayallsec = 0;
-        
-        function start(){
-            document.getElementById("bargroup").style.visibility ="hidden";
-            document.getElementById("start_button").disabled="disabled";
-            document.getElementById("reset_button").disabled="disabled";
-            document.getElementById("stop_button").disabled=""
-            if(ontheway == false){
-                          var allsec = timeAll(); 
-               }else{
-                   var allsec = onthewayallsec;
-               }
-            ontheway = false;
-            var dt = new Date();
-            var endDt = new Date(dt.getTime() + allsec * 1000);
-            hour = Math.floor(allsec/3600);
-            if(hour < 10){
-            hour_display.innerHTML="0"+hour;
-               }else{
-               hour_display.innerHTML=hour;
-               }
-            hour_remainder =Math.floor(allsec%3600);
-            minute = Math.floor(hour_remainder/60);
-            if(minute < 10){
-            minute_display.innerHTML="0"+minute;
-               }else{
-               minute_display.innerHTML=minute;
-               }
-            sec=Math.floor(hour_remainder%60);
-      if(sec < 10){
-            second_display.innerHTML="0"+sec;
-               }else{
-               second_display.innerHTML=sec;
-               }
-  var count_down = setInterval(function(){
-    allsec = allsec-0.1;
-          dt = new Date();
-            hour = Math.floor(allsec/3600);
-            if(hour < 10){
-            hour_display.innerHTML="0"+hour;
-               }else{
-               hour_display.innerHTML=hour;
-               }
-            hour_remainder =Math.floor(allsec%3600);
-            minute = Math.floor(hour_remainder/60);
-            if(minute < 10){
-            minute_display.innerHTML="0"+minute;
-               }else{
-               minute_display.innerHTML=minute;
-               }
-            sec=Math.floor(hour_remainder%60);
-      if(sec < 10){
-            second_display.innerHTML="0"+sec;
-               }else{
-               second_display.innerHTML=sec;
-               }
-    if(dt.getTime() >= endDt.getTime()){
-      clearInterval(count_down);
-        minute_display.innerHTML=minute;
-                  playaudio();
-                  second_display.innerHTML="00";
-          minute_display.innerHTML="00";
-          hour_display.innerHTML="00";
+
+      target.value = time.value;
+      target2.innerHTML = ('0' + time.value).slice(-2)
     }
+  }
+
+  for(var i = 0; i<time2.length;i++){
+
+    num=time2[i].getElementsByTagName("input")[0];
+    bar=time2[i].getElementsByTagName("input")[1];
+
+    target=time_display[i].getElementsByTagName("span")[0];
+
+    num.addEventListener("input",rangeValue(num,bar,target));
+    bar.addEventListener("input",rangeValue(bar,num,target));
+
+  }
+
+  function timeAll(){
+    var hour_all = document.getElementById("hour").value;
+    var minute_all = document.getElementById("minute").value;
+    var second_all = document.getElementById("second").value;
+    var all = Number(hour_all*3600)+Number(minute_all*60)+Number(second_all);
+    return all;
+  }
+
+  var ontheway = false;
+  var onthewayallsec = 0;
+
+  function start(){
+    document.getElementById("bargroup").style.visibility ="hidden";
+    document.getElementById("start_button").disabled="disabled";
+    document.getElementById("reset_button").disabled="disabled";
+    document.getElementById("stop_button").disabled="";
+
+    if(ontheway == false){
+      var allsec = timeAll(); 
+    } else {
+      var allsec = onthewayallsec;
+    }
+
+    ontheway = false;
+    var dt = new Date();
+    var endDt;
+
+    if(COOKIE.get('timer')){
+      endDt = new Date(+COOKIE.get('timer'));
+    } else {
+      endDt = new Date(dt.getTime() + allsec * 1000);
+      document.cookie = 'timer=' + startTime;
+    }
+    hour = Math.floor(allsec/3600);
+
+    if(hour < 10){
+      hour_display.innerHTML="0"+hour;
+    } else {
+      hour_display.innerHTML=hour;
+    }
+
+    hour_remainder =Math.floor(allsec%3600);
+    minute = Math.floor(hour_remainder/60);
+
+    if(minute < 10){
+      minute_display.innerHTML="0"+minute;
+    } else {
+      minute_display.innerHTML=minute;
+    }
+
+    sec=Math.floor(hour_remainder%60);
+
+    if(sec < 10){
+      second_display.innerHTML="0"+sec;
+    } else {
+      second_display.innerHTML=sec;
+    }
+
+    var count_down = setInterval(function(){
+      dt = new Date();
+      allsec = (endDt.getTime() - dt.getTime()) / 1000 ^ 0;
+      hour = Math.floor(allsec/3600);
+      if(hour < 10){
+        hour_display.innerHTML="0"+hour;
+      } else {
+        hour_display.innerHTML=hour;
+      }
+      hour_remainder =Math.floor(allsec%3600);
+
+      minute = Math.floor(hour_remainder/60);
+      if(minute < 10){
+        minute_display.innerHTML="0"+minute;
+      } else {
+        minute_display.innerHTML=minute;
+      }
+
+      sec=Math.floor(hour_remainder%60);
+      if(sec < 10){
+        second_display.innerHTML="0"+sec;
+      } else {
+        second_display.innerHTML=sec;
+      }
+
+      if(dt.getTime() >= endDt.getTime()){
+        clearInterval(count_down);
+        minute_display.innerHTML=minute;
+        playaudio();
+        second_display.innerHTML="00";
+        minute_display.innerHTML="00";
+        hour_display.innerHTML="00";
+      }
+
       if(ontheway == true){
-         clearInterval(count_down);
-         onthewayallsec = allsec;
-         }
-  }, 100);
-        }
+        clearInterval(count_down);
+        onthewayallsec = allsec;
+      }
+    }, 100);
+  }
+
+function stop(){
+  stopaudio();
+  ontheway = true;
+  document.getElementById("start_button").disabled="";
+  document.getElementById("reset_button").disabled="";
+  document.getElementById("stop_button").disabled="disabled"
+  document.getElementById("bargroup").style.visibility = "";
+}
         
-        function stop(){
-            stopaudio();
-            ontheway = true;
-            document.getElementById("start_button").disabled="";
-            document.getElementById("reset_button").disabled="";
-            document.getElementById("stop_button").disabled="disabled"
-            document.getElementById("bargroup").style.visibility = "";
-        }
+function reset(){
+  ontheway = false;
+  onthewayallsec = 0;
+  const $timer_disps = document.querySelectorAll('.time_display > span');
+  const $timer_confs = document.querySelectorAll('.time > input[type="number"]');
+  for(i = 0; i < 3; i++){
+    $timer_disps[i].textContent = ('00' + $timer_confs[i].value).slice(-2);
+  }
+}
         
-        function reset(){
-          ontheway = false;
-          onthewayallsec = 0;
-          const $timer_disps = document.querySelectorAll('.time_display > span');
-          const $timer_confs = document.querySelectorAll('.time > input[type="number"]');
-          for(i = 0; i < 3; i++){
-            console.log()
-            $timer_disps[i].textContent = ('00' + $timer_confs[i].value).slice(-2);
-          }
-        }
-        
-        function playaudio(){
-            document.getElementById('audio').play();
-        }
-        function stopaudio(){
-            document.getElementById('audio').pause();
-        }
-</script> 
-<audio loop src="file:///media/removable/KIOXIA64/08media/01MUSIC/Zattanan/%E7%95%B0%E9%82%A6%E4%BA%BA%E3%82%B7%E3%83%AB%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89%E3%81%AE%E3%83%86%E3%83%BC%E3%83%9E%E3%80%80%E4%B9%85%E4%BF%9D%E7%94%B0%E6%97%A9%E7%B4%80.mp3" loop id="audio">現環境では終了時にアラームが鳴りません</audio>
-</div>
-</div>
-<div class="details-contents">
-		<details>
-			<summary class="summary-contents">︙</summary>
-			<p class="a-contents"><a class="a-contents">Color presets</a>
-			<input type="button" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" class="button-sousyoku" id="osareta">
-			<input type="button" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')" class="button-sousyoku">
-			<input type="button" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')" class="button-sousyoku">
-			<input type="button" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')" class="button-sousyoku">
-			</p>
-			<p class="a-contents">
-			<a class="a-contents">Custom color settings</a>
-			<input type="color"  id="change_bgColor" class="button-sousyoku">
-			<input type="color"  id="change_mainColor" class="button-sousyoku">
-			</p>
-			<p class="a-contents"><a class="a-contents"></a>
-			<button onclick="window.open('https://sites.google.com/edu.nishiyamato.ed.jp/watch/', '_blank', 'location=no')" class="button-sousyoku"> Open As a New Tab(temp) </button>
-			<button id="button1" class="button-sousyoku">Full Screen</button>
-			<button id="button2" class="button-sousyoku">Exit Full Screen</button>
-			
-		<script>
-				window.onload = function(){	document.getElementById("osareta").click();
+function playaudio(){
+  document.getElementById('audio').play?.();
+}
 
-                                  function set_color(e) {
-                                    document.body.style.setProperty('--' + e.target.id.slice(7), e.target.value);
-                                  }
+function stopaudio(){
+  document.getElementById('audio').pause();
+}
+        </script> 
+        <audio loop src="file:///media/removable/KIOXIA64/08media/01MUSIC/Zattanan/%E7%95%B0%E9%82%A6%E4%BA%BA%E3%82%B7%E3%83%AB%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89%E3%81%AE%E3%83%86%E3%83%BC%E3%83%9E%E3%80%80%E4%B9%85%E4%BF%9D%E7%94%B0%E6%97%A9%E7%B4%80.mp3" loop id="audio">現環境では終了時にアラームが鳴りません</audio>
+      </div>
+    </div>
+    <div class="details-contents">
+      <details>
+        <summary class="summary-contents">︙</summary>
+        <p class="a-contents"><a class="a-contents">Color presets</a>
+          <input type="button" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" class="button-sousyoku" id="osareta">
+          <input type="button" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')" class="button-sousyoku">
+          <input type="button" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')" class="button-sousyoku">
+          <input type="button" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')" class="button-sousyoku">
+        </p>
+        <p class="a-contents">
+          <a class="a-contents">Custom color settings</a>
+          <input type="color"  id="change_bgColor" class="button-sousyoku">
+          <input type="color"  id="change_mainColor" class="button-sousyoku">
+        </p>
+        <p class="a-contents"><a class="a-contents"></a>
+          <button onclick="window.open('https://sites.google.com/edu.nishiyamato.ed.jp/watch/', '_blank', 'location=no')" class="button-sousyoku"> Open As a New Tab(temp) </button>
+          <button id="button1" class="button-sousyoku">Full Screen</button>
+          <button id="button2" class="button-sousyoku">Exit Full Screen</button>
 
-                                  [change_bgColor, change_mainColor].forEach(x=>x.addEventListener('change', set_color));
-				}
-				
-				window.addEventListener('load', function(){
-						document.getElementById('button1').addEventListener('click', function(){
-				document.body.requestFullscreen();				
-			});
-			document.getElementById('button2').addEventListener('click', function(){
-				document.exitFullscreen();
-			});
-		});
-		</script>
+          <script>
+  window.onload = function(){
+    document.getElementById("osareta").click();
 
+    function set_color(e) {
+      document.body.style.setProperty('--' + e.target.id.slice(7), e.target.value);
+    }
 
+    [change_bgColor, change_mainColor].forEach(x=>x.addEventListener('change', set_color));
 
-			</p>
-			<p class="a-contents-button"><a class="a-contents-button">Watch://Timer by TADR, SEI2423</a><a class="a-contents-button"> Ver.5.70.3(2023.11.24) </a><a
-			href="https://sites.google.com/edu.nishiyamato.ed.jp/pts/blog?authuser=1" class="a-contents-button"> Release Notes </a>
-			</p>
-		</details>
-	</div>	
-</div>
+    if(COOKIE.get('stopwatch')){
+      startButton.click();
+    }
+
+    if(COOKIE.get('timer')){
+      start_button.click();
+    }
+  }
+
+  window.addEventListener('load', function(){
+    document.getElementById('button1').addEventListener('click', function(){
+      document.body.requestFullscreen();        
+    });
+    document.getElementById('button2').addEventListener('click', function(){
+      document.exitFullscreen();
+    });
+  });
+          </script>
+
+        </p>
+        <p class="a-contents-button">
+          <a class="a-contents-button">Watch://Timer by TADR, SEI2423</a>
+          <a class="a-contents-button"> Ver.6.xx.x(2023.12.12) </a>
+          <a href="https://sites.google.com/tadr-tech/blog" class="a-contents-button"> Release Notes </a>
+        </p>
+      </details>
+    </div>  
+  </div>
 </body>
-
-
 </html>
