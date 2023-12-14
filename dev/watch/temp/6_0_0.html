@@ -112,8 +112,8 @@ details[open] summary {
 }
 
 .details-contents{
-  height: 340px;
-  margin:5px;
+  height: 400px;
+  margin: 5px;
   position: absolute;
   bottom: 0;
 }
@@ -182,9 +182,6 @@ details[open] summary {
   font-size: 24px;
 }
 
-.summary-inside{
-	font-size: 18px;
-}
 
 .ranges{
   width: 200px;
@@ -213,10 +210,12 @@ details[open] summary {
 } 
 
 .a-contents-button{
-  color: var(--mainColor);
-  height: 40px;
+  background-color: var(--bgColor);
+  height: 90px;
   margin: 4px;
   padding: 4px;
+    border-radius: 4px;
+
 }
 
 
@@ -249,6 +248,56 @@ details[open] summary {
   vertical-align: middle;
 }
 
+#popup {
+  display: none; 
+}
+
+.popup-open {
+  cursor: pointer; 
+  font-size: 24px;
+}
+
+.popup-overlay {
+  display: none; 
+}
+
+#popup:checked ~ .popup-overlay {
+  display: block;
+  z-index: 99999;
+  background-color: #55555590;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.popup-window {
+  width: 90vw;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #33333399;
+  border-radius: 6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-text {
+  margin: 0;
+}
+
+.popup-text:not(:last-of-type) {
+  margin-bottom: 1em
+}
+
+.popup-close {
+  cursor: pointer;
+  position: absolute;
+  top: -26px;
+  right: 0;
+}
 
 </style>
 </head>
@@ -1746,8 +1795,15 @@ function stopaudio(){
     </div>
     <div class="details-contents">
       <details>
-        <summary class="summary-contents">︙</summary>
-        <p class="a-contents"><a class="a-contents">Color presets</a>
+        <summary class="summary-contents"></summary>
+       </details>
+
+		  <input type="checkbox" id="popup">
+<label class="popup-open" for="popup">︙</label>
+<div class="popup-overlay">
+    <div class="popup-window">
+        <p class="popup-text">
+		         <p class="a-contents"><a class="a-contents">Color presets</a>
           <input type="button" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" class="button-sousyoku" id="osareta">
           <input type="button" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')" class="button-sousyoku">
           <input type="button" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')" class="button-sousyoku">
@@ -1791,18 +1847,22 @@ function stopaudio(){
     });
   });
           </script>
-
-        </p>
-        <p class="a-contents-button">
-          <a class="a-contents-button">Watch://Timer by TADR, SEI2423</a>
-          <a class="a-contents-button"> Ver.6.xx.x(2023.12.12) </a>
-          <a href="https://sites.google.com/view/tadr-tech/blog" class="a-contents-button"> Release Notes </a>
-        </p>
-		        <details>
-        <summary class="summary-inside">Resources</summary>
-		  <a>音源：甘茶の音楽工房様（https://amachamusic.chagasi.com/）</a>
-      </details>
-      </details>
+        <div class="a-contents-button">
+		  <p class="a-contents>"
+          <a class="">Watch://Timer by TADR, SEI2423</a>
+          <a class=""> Ver.6.xx.x(2023.12.12) </a>
+          <a href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a><br>
+		  		  	<a class="">音源：甘茶の音楽工房様（https://amachamusic.chagasi.com/）</a>
+</p>
+		  </div>
+		          <label class="popup-close" for="popup">
+            <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
+                <line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
+            </svg>
+        </label>
+    </div>
+</div>
     </div>  
   </div>
 </body>
