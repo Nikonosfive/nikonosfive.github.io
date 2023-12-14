@@ -15,6 +15,8 @@
 
 </script>
 <style>
+
+
 .area > input:checked + label {
   font-weight: bold;
 }
@@ -180,6 +182,10 @@ details[open] summary {
   font-size: 24px;
 }
 
+.summary-inside{
+	font-size: 18px;
+}
+
 .ranges{
   width: 200px;
   height:auto;
@@ -218,6 +224,8 @@ details[open] summary {
   font-family: 'Lato';
   font-weight: middle;
   font-size: 3vw;
+  cursor: pointer;
+
 }
 
 .input-tag{
@@ -1324,6 +1332,7 @@ details[open] summary {
               </script>
             </p>
           </div>
+			 		
         </div>
         <input type="radio" name="tab_name" id="tab3">
         <label class="tab_class" for="tab3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-settings"  viewBox="0.00 0.00 300 300">
@@ -1637,7 +1646,7 @@ details[open] summary {
       endDt = new Date(+COOKIE.get('timer'));
     } else {
       endDt = new Date(dt.getTime() + allsec * 1000);
-      document.cookie = 'timer=' + startTime;
+      document.cookie = 'timer=' + endDt;
     }
     hour = Math.floor(allsec/3600);
 
@@ -1732,7 +1741,7 @@ function stopaudio(){
   document.getElementById('audio').pause();
 }
         </script> 
-        <audio loop src="file:///media/removable/KIOXIA64/08media/01MUSIC/Zattanan/%E7%95%B0%E9%82%A6%E4%BA%BA%E3%82%B7%E3%83%AB%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89%E3%81%AE%E3%83%86%E3%83%BC%E3%83%9E%E3%80%80%E4%B9%85%E4%BF%9D%E7%94%B0%E6%97%A9%E7%B4%80.mp3" loop id="audio">現環境では終了時にアラームが鳴りません</audio>
+        <audio loop src="https://nikonosfive.github.io/dev/watch/sekibaku.mp3" loop id="audio">現環境では終了時にアラームが鳴りません</audio>
       </div>
     </div>
     <div class="details-contents">
@@ -1750,7 +1759,7 @@ function stopaudio(){
           <input type="color"  id="change_mainColor" class="button-sousyoku">
         </p>
         <p class="a-contents"><a class="a-contents"></a>
-          <button onclick="window.open('https://sites.google.com/edu.nishiyamato.ed.jp/watch/', '_blank', 'location=no')" class="button-sousyoku"> Open As a New Tab(temp) </button>
+          <button onclick="window.open('https://nikonosfive.github.io/dev/watch/5_70_3.html', '_blank', 'location=no')" class="button-sousyoku"> Open As a New Tab(temp) </button>
           <button id="button1" class="button-sousyoku">Full Screen</button>
           <button id="button2" class="button-sousyoku">Exit Full Screen</button>
 
@@ -1787,8 +1796,12 @@ function stopaudio(){
         <p class="a-contents-button">
           <a class="a-contents-button">Watch://Timer by TADR, SEI2423</a>
           <a class="a-contents-button"> Ver.6.xx.x(2023.12.12) </a>
-          <a href="https://sites.google.com/tadr-tech/blog" class="a-contents-button"> Release Notes </a>
+          <a href="https://sites.google.com/view/tadr-tech/blog" class="a-contents-button"> Release Notes </a>
         </p>
+		        <details>
+        <summary class="summary-inside">Resources</summary>
+		  <a>音源：甘茶の音楽工房様（https://amachamusic.chagasi.com/）</a>
+      </details>
       </details>
     </div>  
   </div>
