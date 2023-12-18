@@ -89,34 +89,7 @@ html {
   border-radius: .3rem;
 }
 
-details {
-  border: 0px solid #aaa;
-   border-radius: 4px;
-  padding: 0.5em 0.5em 0;
-}
 
-summary {
-  margin: -0.5em -0.5em 0;
-  padding: 0.5em;
-  list-style:none;
-}
-
-details[open] {
-  padding: 0.5em;
-  background-color:#79797988;
-}
-
-details[open] summary {
-   border-bottom: 0px solid #aaa;
-  margin-bottom: 0.5em;
-}
-
-.details-contents{
-  height: 50vh;
-  margin: 5px;
-  position: absolute;
-  bottom: 0;
-}
 
 .button-sousyoku{
   color: var(--mainColor);
@@ -151,35 +124,27 @@ details[open] summary {
   -moz-transform: scale(1);
   background-color: var(--bgColor);
   color: var(--mainColor);
+  font-family: 'Lato'
 }
 
 .timer-contents{
-  font-family: 'Lato';
   font-size: 16vw;
   text-align: center;
   padding: 1rem;
-  margin: .5rem;
   background-color: var(--bgColor);
 }
 
 .timer-contents-a{
-  font-family: 'Lato';
   font-size: 8vw;
   text-align: center;
 }
 
 .timer-contents-b{
-  font-family: 'Lato';
   font-size: 24px;
   text-align: center;
   color: var(--mainColor);
   padding: 5px;
   margin: 3px;
-}
-
-
-.summary-contents{
-  font-size: 24px;
 }
 
 
@@ -220,11 +185,8 @@ details[open] summary {
 
 
 .date-contents{
-  font-family: 'Lato';
-  font-weight: middle;
   font-size: 3vw;
   cursor: pointer;
-
 }
 
 .input-tag{
@@ -264,7 +226,7 @@ details[open] summary {
 #popup:checked ~ .popup-overlay {
   display: block;
   z-index: 99999;
-  background-color: #55555590;
+  background-color: #22222290;
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -309,8 +271,7 @@ details[open] summary {
       <label class="tab_class" for="tab1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 300.00 300.00"  class="svg-settings">
         <g stroke-width="2.00" fill="none" stroke-linecap="butt">
 <path stroke=" var(--mainColor)" vector-effect="non-scaling-stroke" d="
-  M 166.96 67.45
-  C 170.25 67.80 174.70 66.96 174.73 63.00
+  M 166.96 67.45 C 170.25 67.80 174.70 66.96 174.73 63.00
   Q 174.78 55.38 174.74 47.94
   A 4.86 4.85 89.8 0 0 169.89 43.11
   Q 151.17 43.11 131.89 43.12
@@ -1793,33 +1754,30 @@ function stopaudio(){
         <audio loop src="https://nikonosfive.github.io/dev/watch/sekibaku.mp3" loop id="audio">現環境では終了時にアラームが鳴りません</audio>
       </div>
     </div>
-    <div class="details-contents">
-      <details>
-        <summary class="summary-contents"></summary>
-       </details>
-
+	 
+<!--Section -->
 		  <input type="checkbox" id="popup">
 <label class="popup-open" for="popup">︙</label>
 <div class="popup-overlay">
     <div class="popup-window">
         <p class="popup-text">
-		         <p class="a-contents"><a class="a-contents">Color presets</a>
+			<p class="a-contents"><a class="a-contents">Color presets</a>
           <input type="button" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" class="button-sousyoku" id="osareta">
           <input type="button" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')" class="button-sousyoku">
           <input type="button" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')" class="button-sousyoku">
           <input type="button" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')" class="button-sousyoku">
-        </p>
-        <p class="a-contents">
+			</p>
+			<p class="a-contents">
           <a class="a-contents">Custom color settings</a>
           <input type="color"  id="change_bgColor" class="button-sousyoku">
           <input type="color"  id="change_mainColor" class="button-sousyoku">
-        </p>
-        <p class="a-contents"><a class="a-contents"></a>
-          <button onclick="window.open('https://nikonosfive.github.io/dev/watch/5_70_3.html', '_blank', 'location=no')" class="button-sousyoku"> Open As a New Tab(temp) </button>
-          <button id="button1" class="button-sousyoku">Full Screen</button>
-          <button id="button2" class="button-sousyoku">Exit Full Screen</button>
-
-          <script>
+			</p>
+			<p class="a-contents">
+				<a class="a-contents">Functions</a>
+				<button onclick="window.open('https://nikonosfive.github.io/dev/watch/5_70_3.html', '_blank', 'location=no')" class="button-sousyoku">Open As a New Tab</button>
+				<button id="button1" class="button-sousyoku">Full Screen</button>
+				<button id="button2" class="button-sousyoku">Exit Full Screen</button>
+				<script>
   window.onload = function(){
     document.getElementById("osareta").click();
 
@@ -1846,24 +1804,24 @@ function stopaudio(){
       document.exitFullscreen();
     });
   });
-          </script>
-        <div class="a-contents-button">
-		  <p class="a-contents>"
-          <a class="">Watch://Timer by TADR, SEI2423</a>
-          <a class=""> Ver.6.xx.x(2023.12.12) </a>
-          <a href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a><br>
-		  		  	<a class="">音源：甘茶の音楽工房様（https://amachamusic.chagasi.com/）</a>
-</p>
-		  </div>
-		          <label class="popup-close" for="popup">
-            <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-                <line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
-            </svg>
-        </label>
+				</script>
+				</p>
+				<div class="a-contents-button">
+					<p class="a-contents>"
+					  	<a class="">Watch://Timer by TADR, SEI2423</a>
+						<a class=""> Ver.6.xx.x(2023.12.12) </a>
+						<a href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a><br>
+					  	<a class="">音源：甘茶の音楽工房様（https://amachamusic.chagasi.com/）</a>
+					</p>
+				</div>
+				<label class="popup-close" for="popup">
+					<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+						<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
+						<line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
+					</svg>
+				</label>
     </div>
 </div>
-    </div>  
-  </div>
+    </div> 
 </body>
 </html>
