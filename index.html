@@ -56,7 +56,6 @@
 		 border-radius: 3px;
 		 display: flex;
 		 justify-content: center;
-		 align-items: center;
 	 }
 	 .honbun{
 		 color: #000000;
@@ -78,6 +77,18 @@
 	 .fadeInUp {
 		 opacity: 0;
 		 transform: translateY(100px);
+	 }
+	 @keyframes fadeIn {
+		 0% {}
+		 100% {
+			 opacity: 1;
+			 transform: translate(0);
+		 }
+	 }
+	 .fadeIn {
+		 animation-name: fadeIn;
+		 animation-duration: 1s;
+		 animation-fill-mode: forwards;
 	 }
  </style>
  <script>
