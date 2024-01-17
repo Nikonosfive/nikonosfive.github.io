@@ -76,7 +76,7 @@
 	 }
 	 .fadeInUp {
 		 opacity: 0;
-		 transform: translateY(0px);
+		 transform: translateY(100px);
 	 }
 	 @keyframes fadeIn {
 		 0% {}
@@ -91,19 +91,19 @@
 		 animation-fill-mode: forwards;
 	 }
  </style>
- <script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
 	 $(function () {
-    $(window).scroll(function () {
-        const wHeight = $(window).height();
-        const wScroll = $(window).scrollTop();
-            $(".fadeInUp").each(function () {
-                const bPosition = $(this).offset().top;
-            if (wScroll > bPosition - wHeight + 200) {
-                $(this).addClass("fadeIn");
-            }
-        });
-    });
-});
+		 $(window).scroll(function () {
+			 const wHeight = $(window).height();
+			 const wScroll = $(window).scrollTop();
+			 $(".fadeInUp").each(function () {
+				 const bPosition = $(this).offset().top;
+				 if (wScroll > bPosition - wHeight + 200) {
+					 $(this).addClass("fadeIn");
+				 }
+			 });
+		 });
+	 });
  </script>
  </head>
 
@@ -162,7 +162,7 @@
  <!---SECTION 終わり--->
  <div>
 	 <div class="midashihanten">
-		 <p class="pfooter">Managemented by Nikonosfive, T.A Design Room since2019. 見出しフェードイン反映済み3</p>
+		 <p class="pfooter">Managemented by Nikonosfive, T.A Design Room since2019. 見出しフェードイン反映済み4</p>
 	 </div>
  </div>
  </body>
