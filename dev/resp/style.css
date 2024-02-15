@@ -1,0 +1,74 @@
+.horizon{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: Helvetica;
+}
+
+.content{
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px;
+  display: inline-block;
+  width: calc(100% / 3);
+  min-width: 200px;
+  max-width: 300px;
+  height: auto;
+  min-height: 250px;
+  opacity: 0.8;
+  background-color: #243380;
+}
+
+.content:hover{
+  opacity: 1;
+}
+
+.box{
+  align-content: center;
+}
+
+.midashi{
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+a{
+  color: #FFFFFF;
+}
+
+details {
+  border: 1px solid #FFFFFF77;
+  border-radius: 5px;
+  padding: 2px 2px 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: #FFFFFF99;
+}
+
+details:hover{
+  background-color: #243380;
+  color: #FFFFFF;
+}
+
+summary {
+  font-weight: bold;
+  margin: -2px -2px 0;
+  padding: 8px;
+}
+
+details[open] {
+  padding: 8px;
+  color: #000000;
+  background-color: #FFFFFF99;
+}
+
+
+details[open] summary {
+  margin-bottom: 2px;
+}
+
+hr{
+  border-width: 2px 0 0 0;
+  border-color: #FFFFFF;
+}
