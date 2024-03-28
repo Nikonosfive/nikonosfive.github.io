@@ -6,7 +6,7 @@
 <link rel="manifest" href="https://nikonosfive.github.io/dev/watch/manifest.json" />
 <link rel="apple-touch-icon" sizes="180x180" type="image/svg+xml" href="https://nikonosfive.github.io/dev/watch/logo.svg">
 <script>
- /* const COOKIE = new Map (
+  const COOKIE = new Map (
     document.cookie.split( '; ' ).map(x => {
       return x.split( '=' );
     })
@@ -15,7 +15,7 @@
   COOKIE.set = function(key, value) {
     throw Error('This map was freezed.');
   };
-*/
+	
 </script>
 <style>
 
@@ -765,12 +765,12 @@ function handleKeydown(event){
     stopButton.disabled = false;
     resetButton.disabled = true;
     rapButton.disabled = false;
-    if(COOKIE.get('stopwatch')){
+    /*if(COOKIE.get('stopwatch')){
       startTime = +COOKIE.get('stopwatch');
     } else {
       startTime = Date.now();
       document.cookie = 'stopwatch=' + startTime;
-    }
+    }*/
     displayTime();
   }
   if (keyCode == 38) {
@@ -814,12 +814,12 @@ function handleKeydown(event){
     stopButton.disabled = false;
     resetButton.disabled = true;
     rapButton.disabled = false;
-    if(COOKIE.get('stopwatch')){
+    /*if(COOKIE.get('stopwatch')){
       startTime = +COOKIE.get('stopwatch');
     } else {
       startTime = Date.now();
       document.cookie = 'stopwatch=' + startTime;
-    }
+    }*/
     displayTime();
   });
 
