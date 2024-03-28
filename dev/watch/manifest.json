@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Watch://Timer",
+  "short_name": "W:T",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "description": "多機能時間管理ツール。",
+  "icons": [
+    {
+      "src": "https://nikonosfive.github.io/dev/watch/logo.svg",
+      "type": "image/svg+xml"
+    },
+ ],
+}
