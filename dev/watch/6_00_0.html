@@ -765,12 +765,12 @@ function handleKeydown(event){
     stopButton.disabled = false;
     resetButton.disabled = true;
     rapButton.disabled = false;
-    /*if(COOKIE.get('stopwatch')){
+    if(COOKIE.get('stopwatch')){
       startTime = +COOKIE.get('stopwatch');
     } else {
       startTime = Date.now();
-      document.cookie = 'stopwatch=' + startTime;
-    }*/
+      /*document.cookie = 'stopwatch=' + startTime; */
+    }
     displayTime();
   }
   if (keyCode == 38) {
@@ -814,12 +814,12 @@ function handleKeydown(event){
     stopButton.disabled = false;
     resetButton.disabled = true;
     rapButton.disabled = false;
-    /*if(COOKIE.get('stopwatch')){
+    if(COOKIE.get('stopwatch')){
       startTime = +COOKIE.get('stopwatch');
     } else {
       startTime = Date.now();
-      document.cookie = 'stopwatch=' + startTime;
-    }*/
+      /* document.cookie = 'stopwatch=' + startTime; */
+    }
     displayTime();
   });
 
@@ -1721,7 +1721,7 @@ function handleKeydown(event){
       endDt = new Date(+COOKIE.get('timer'));
     } else {
       endDt = new Date(dt.getTime() + allsec * 1000);
-      document.cookie = 'timer=' + endDt;
+     /* document.cookie = 'timer=' + endDt; */
     }
     hour = Math.floor(allsec/3600);
 
@@ -1833,7 +1833,7 @@ function handleKeydown(event){
       endDt = new Date(+COOKIE.get('timer'));
     } else {
       endDt = new Date(dt.getTime() + allsec * 1000);
-      document.cookie = 'timer=' + endDt;
+      /* document.cookie = 'timer=' + endDt; */
     }
     hour = Math.floor(allsec/3600);
 
