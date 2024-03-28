@@ -6,6 +6,7 @@
   "display": "standalone",
   "background_color": "#FFFFFF",
   "description": "多機能時間管理ツール。",
+  "start_url": "https://nikonosfive.github.io/dev/watch/6_00_0.html",
   "icons": [
     {
       "src": "https://nikonosfive.github.io/dev/watch/logo.svg",
