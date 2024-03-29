@@ -2,12 +2,27 @@
   "short_name": "W:T",
   "name": "Watch://Timer",
   "icons": [
-    {
-      "src": "https://nikonosfive.github.io/dev/watch/logo.ico",
-       "sizes": "180x180"
-      
-    }
-  ],
+      {
+        "src": "https://nikonosfive.github.io/dev/watch/logo_96.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "https://nikonosfive.github.io/dev/watch/logo_144.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+      {
+        "src": "https://nikonosfive.github.io/dev/watch/logo_192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "https://nikonosfive.github.io/dev/watch/logo_521.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
   "start_url": "https://nikonosfive.github.io/dev/watch/6_00_0.html",
   "display": "standalone",
   "lang": "ja-JP",
@@ -17,29 +32,3 @@
   "prefer_related_applications": false
 }
 
-
-//{
-
- //   "icons": [
-      {
-        "src": "/YouTubeMP3modoki/files/icon/icon-96x96.png",
-        "type": "image/png",
-        "sizes": "96x96"
-      },
-      {
-        "src": "/YouTubeMP3modoki/files/icon/icon-144x144.png",
-        "type": "image/png",
-        "sizes": "144x144"
-      },
-      {
-        "src": "/YouTubeMP3modoki/files/icon/icon-192x192.png",
-        "type": "image/png",
-        "sizes": "192x192"
-      },
-      {
-        "src": "/YouTubeMP3modoki/files/icon/icon-512x512.png",
-        "type": "image/png",
-        "sizes": "512x512"
-      }
-    ]
-  }
