@@ -3,7 +3,8 @@
   "name": "Watch://Timer",
   "icons": [
     {
-      "src": "https://nikonosfive.github.io/dev/watch/logo.svg",
+      "src": "https://nikonosfive.github.io/dev/watch/logo.svg"
+      
     }
   ],
   "start_url": "https://nikonosfive.github.io/dev/watch/6_00_0.html",
