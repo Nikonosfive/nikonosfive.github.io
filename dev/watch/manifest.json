@@ -1,15 +1,14 @@
 {
-  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "Watch://Timer",
   "short_name": "W:T",
-  "start_url": "https://nikonosfive.github.io/dev/watch/6_00_0.html",
-  "display": "standalone",
-  "background_color": "#FFFFFF",
-  "description": "多機能時間管理ツール。",
+  "name": "Watch://Timer",
   "icons": [
     {
-      "src": "https://nikonosfive.github.io/dev/watch/logo.svg",
-      "type": "image/svg+xml"
+      "src": "https://nikonosfive.github.io/dev/watch/logo.icong",
+      "sizes": "180x180",
     }
- ]
+  ],
+  "start_url": "https://nikonosfive.github.io/dev/watch/6_00_0.html",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
 }
