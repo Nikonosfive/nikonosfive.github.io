@@ -3,8 +3,8 @@
   "name": "Watch://Timer",
   "icons": [
     {
-      "src": "https://nikonosfive.github.io/dev/watch/logo_tate.ico",
-       "sizes": "162x179"
+      "src": "https://nikonosfive.github.io/dev/watch/logo.ico",
+       "sizes": "180x80"
       
     }
   ],
