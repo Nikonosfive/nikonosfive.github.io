@@ -15,9 +15,41 @@
   COOKIE.set = function(key, value) {
     throw Error('This map was freezed.');
   };
+  
+  
 	
 </script>
 <style>
+ .wrap{
+
+}
+#card{
+  margin: auto;
+  width: 100vw;
+  perspective: 0px;
+  transform-style: preserve-3d;
+  transition: transform .8s;
+}
+
+.card-front, .card-back{
+  margin: auto;
+  width: 100vw;
+  position: absolute;
+  backface-visibility: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.card-front{
+  transform: rotateY(180deg);
+}
+
+.card-back{
+}
+
+.mekuru{
+  transform: rotateY(180deg)
+}
 
 
 .area > input:checked + label {
@@ -222,6 +254,68 @@ html {
   vertical-align: middle;
 }
 
+
+  
+ #popup2 {
+  display: none; 
+}
+
+.popup-open2 {
+  cursor: pointer; 
+  font-size: 36px;
+  position: fixed;
+  top: 150px;
+  right: 10px;
+  opacity: 35%;
+  z-index: 10;   
+}
+  
+  .popup-open2:hover{
+    opacity: 100%;
+  }
+
+.popup-overlay2 {
+  display: none; 
+}
+
+#popup2:checked ~ .popup-overlay2 {
+  display: block;
+  z-index: 99999;
+  background-color: #22222290;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.popup-window2 {
+  width: 90vw;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #33333399;
+  border-radius: 6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-text2 {
+  margin: 0;
+}
+
+.popup-text2:not(:last-of-type) {
+  margin-bottom: 1em
+}
+
+.popup-close2 {
+  cursor: pointer;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+  
 #popup {
   display: none; 
 }
@@ -281,7 +375,7 @@ html {
   top: 6px;
   right: 6px;
 }
-
+  
 </style>
 </head>
 
@@ -770,8 +864,8 @@ html {
 function handleKeydown(event){
   var keyCode = event.keyCode;
   // 条件文で制御する
-  if (keyCode == 37) {
-     startButton.disabled = true;
+  if (!startButton.disabled && keyCode == 37) {
+    startButton.disabled = true;
     stopButton.disabled = false;
     resetButton.disabled = true;
     rapButton.disabled = false;
@@ -783,7 +877,7 @@ function handleKeydown(event){
     }
     displayTime();
   }
-  if (keyCode == 38) {
+  if (!stopButton.disabled && keyCode == 38) {
     startButton.disabled = false;
     stopButton.disabled = true;
     resetButton.disabled = false;
@@ -1402,7 +1496,15 @@ function handleKeydown(event){
   start();
             </script>
           </div>
-          <div class="date-contents">
+          
+          <div class="wrap">
+            
+            
+            
+            
+  <div class="" id="card">
+    <div class="card-front">
+       <div class="date-contents">
             <p style="text-align:center">
               <script>
         var today=new Date(); 
@@ -1415,6 +1517,49 @@ function handleKeydown(event){
               </script>
             </p>
           </div>
+    </div>
+    <div class="card-back">
+       <div class="date-contents">
+            <p style="text-align:center">
+              <script>
+        var today=new Date(); 
+        var year = today.getFullYear();
+        var month = today.getMonth()+1;
+        var week = today.getDay();
+        var day = today.getDate();
+        var week_ja= new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
+        document.write(year+" "+month+"/"+day+" "+week_ja[week]+"");
+              </script>
+            </p>
+          </div>
+    </div>
+  </div>
+</div>
+
+  <script
+    src="https://code.jquery.com/jquery-3.5.0.js"
+    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+    crossorigin="anonymous"></script>
+          <script>
+            $(function(){
+ console.log("tamaki")
+    var card = document.getElementById('card');
+    card.addEventListener('click', function() {
+      turnover();
+    });
+ 
+    function turnover() {
+      if(card.className = card.className === ''){
+        card.className = 'mekuru';
+      }else{
+        card.className = '';
+      }
+    }
+})
+          </script>
+          
+          
+         
 			 		
         </div>
         <input type="radio" name="tab_name" tabindex="0" id="tab3">
@@ -1658,15 +1803,28 @@ function handleKeydown(event){
           <input type="button" id="stop_button" value="stop" class="button-select" onclick="stop()" disabled>
           <input type="button" id="reset_button" value="reset" class="button-select" onclick="reset()" disabled>
         </center>
-        <center>
-          <div>
-            <div id="bargroup">
-              <div class="time"><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag"  ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div>
-              <div class="time"><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1"  value="0" class="ranges"/></div>
-              <div class="time"><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/><br><br></div>
-            </div>
-          </div>
-        </center>
+        
+<!--Section -->
+<input type="checkbox" id="popup2">
+<label class="popup-open2" for="popup2">⊕</label>
+<div class="popup-overlay2">
+    <div class="popup-window2">
+      <div class="a-contents"><h2>Settings</h2>
+      </div>
+				<div class="a-contents-button">
+          <center> <div> <div id="bargroup"> <div class="time"><b>H </b><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag" ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div> <div class="time"><b>M </b><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges"/></div> <div class="time"><b>S </b><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/></center>
+				</div>
+				<label class="popup-close2" for="popup2">
+					<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+						<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
+						<line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
+					</svg>
+				</label>
+    </div>
+</div>
+          
+          
+          
         <script>
   var time2 = document.getElementsByClassName('time');
   var time_display=document.getElementsByClassName("time_display");
