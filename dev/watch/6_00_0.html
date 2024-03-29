@@ -64,6 +64,7 @@
   display: block;
   float: left;
   order: -1;
+  z-index: 5;   
 }
 
 input[name="tab_name"] {
@@ -228,7 +229,16 @@ html {
 .popup-open {
   cursor: pointer; 
   font-size: 24px;
+  position: fixed;
+  top: 13px;
+  right: 0;
+  opacity: 35%;
+  z-index: 10;   
 }
+  
+  .popup-open:hover{
+    opacity: 100%;
+  }
 
 .popup-overlay {
   display: none; 
