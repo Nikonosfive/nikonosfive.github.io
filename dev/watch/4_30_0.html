@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+<style>
+*{
+  margin:0;
+  padding:0;
+  line-height:1.3;
+}
+
+.area {
+  width: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  display: flex;
+}
+ 
+.tab_class {
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  width: calc(99%/3);
+  height: 60px;
+  line-height: 50px;
+  font-size: 15px;
+  text-align: center;
+  display: block;
+  float: left;
+  order: -1;
+  }
+ 
+input[name="tab_name"] {
+  display: none;
+}
+ 
+input:checked + .tab_class {
+}
+ 
+.content_class {
+  display: none;
+  width: 100%;
+}
+ 
+input:checked + .tab_class + .content_class {
+  display: block;
+}
+html, body {
+  font-family: 'Lato';
+  font-size: 16px;
+}
+
+
+#time {
+  font-size: 10rem;
+  text-align: center;
+  padding: 1rem;
+  margin: .5rem;
+}
+
+#buttons {
+  font-size: 1rem;
+  text-align: center;
+}
+
+#start, #stop, #reset {
+  font-size: 1.5rem;
+  border-radius: .3rem;
+}
+
+details {
+	border: 0px solid #aaa;
+  	border-radius: 4px;
+  	padding: 0.5em 0.5em 0;
+	}
+
+summary {
+	margin: -0.5em -0.5em 0;
+	padding: 0.5em;
+	list-style:none;
+	}
+
+details[open] {
+  	padding: 0.5em;
+	background-color:#FFFFFF66;
+	}
+
+details[open] summary {
+ 	border-bottom: 0px solid #aaa;
+  	margin-bottom: 0.5em;
+	}
+
+.details-contents{
+	height:90px;
+	margin:5px;
+	position: absolute;
+	bottom: 0;
+　}
+
+.button-sousyoku{
+	color: var(--mainColor);
+	background-color: var(--bgColor);
+	padding: 5px;
+	margin: 3px;
+   border-radius: 5px;
+	font-size: 24px;
+   }
+
+.tempo {
+  zoom: 1.5;
+  -moz-transform: scale(1.5);
+}
+
+.timer-contents{
+  font-family: 'Lato';
+  font-size: 15rem;
+  text-align: center;
+  padding: 1rem;
+  margin: .5rem;
+}
+
+}
+</style>
+</head>
+
+<body style="background-color: var(--bgColor); color: var(--mainColor);">
+<div class="area">
+<input type="radio" name="tab_name" id="tab1"  >
+<label class="tab_class" for="tab1">StopWatch</label>
+<div class="content_class">
+    <div id="time">00:00:00.000</div>
+    <div id="buttons">
+      <input id="start" type="button" value="start" class="button-sousyoku" >
+      <input id="stop" type="button" value="stop" class="button-sousyoku">
+      <input id="reset" type="button" value="reset" class="button-sousyoku">
+    </div>
+  
+<script>
+const time = document.getElementById('time');
+const startButton = document.getElementById('start');
+const stopButton = document.getElementById('stop');
+const resetButton = document.getElementById('reset');
+
+// 開始時間
+let startTime;
+// 停止時間
+let stopTime = 0;
+// タイムアウトID
+let timeoutID;
+
+// 時間を表示する関数
+function displayTime() {
+  const currentTime = new Date(Date.now() - startTime + stopTime);
+  const h = String(currentTime.getHours()-9).padStart(2, '0');
+  const m = String(currentTime.getMinutes()).padStart(2, '0');
+  const s = String(currentTime.getSeconds()).padStart(2, '0');
+  const ms = String(currentTime.getMilliseconds()).padStart(3, '0');
+
+  time.textContent = `${h}:${m}:${s}.${ms}`;
+  timeoutID = setTimeout(displayTime, 10);
+}
+
+// スタートボタンがクリックされたら時間を進める
+startButton.addEventListener('click', () => {
+  startButton.disabled = true;
+  stopButton.disabled = false;
+  resetButton.disabled = true;
+  startTime = Date.now();
+  displayTime();
+});
+
+// ストップボタンがクリックされたら時間を止める
+stopButton.addEventListener('click', function() {
+  startButton.disabled = false;
+  stopButton.disabled = true;
+  resetButton.disabled = false;
+  clearTimeout(timeoutID);
+  stopTime += (Date.now() - startTime);
+});
+
+// リセットボタンがクリックされたら時間を0に戻す
+resetButton.addEventListener('click', function() {
+  startButton.disabled = false;
+  stopButton.disabled = true;
+  resetButton.disabled = true;
+  time.textContent = '00:00:00.000';
+  stopTime = 0;
+});
+</script>
+</div>
+
+<input type="radio" name="tab_name" id="tab2" checked>
+<label class="tab_class" for="tab2">Watch</label>
+<div class="content_class">
+		<div id="myClock" align="center"  style="font: 15em Lato" class="watch-contents">
+	<script>
+	function updateClock() {
+		var now = new Date();
+		var hour = now.getHours();
+		var minute = now.getMinutes();
+		var second = now.getSeconds();
+		if ( hour < 10 ) hour = "0" + hour;
+		if ( minute < 10 ) minute = "0" + minute;
+		if ( second < 10 ) second = "0" + second;
+		document.getElementById('myClock').innerHTML = hour+":"+minute+":"+second;
+	}
+	
+	function start() {
+		setInterval("updateClock();", 1000);
+		updateClock();
+	}
+
+	function changeColor(main, bg){
+		document.body.style.setProperty('--mainColor', main);
+		document.body.style.setProperty('--bgColor', bg);
+	}
+
+
+	start()
+	</script>
+	</div>
+	<div class="date-contents">
+		<h1 style="text-align:center">
+			<script>
+				var today=new Date(); 
+				var year = today.getFullYear();
+				var month = today.getMonth()+1;
+				var week = today.getDay();
+				var day = today.getDate();
+				var week_ja= new Array("日","月","火","水","木","金","土");
+				document.write(year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
+			</script>
+		</h1>
+	</div>
+	
+	
+	</div>
+<input type="radio" name="tab_name" id="tab3"  >
+<label class="tab_class" for="tab3">Timer</label>
+<div class="content_class">
+<div class="timer-contents">
+<div  id="largehour" class="time_display"style="display: inline-block; _display: inline;"><span id="hour_display">00</span>
+</div>:<div id="largeminute"class="time_display"style="display: inline-block; _display: inline;"><span id="minute_display">00</span>
+</div>:<div id="largesecond" class="time_display"style="display: inline-block; _display: inline;"><span id="second_display">30</span>
+</div>
+</div>
+<center>
+<br>
+<input type="button" id="start_button" value="start" class="button-sousyoku" onclick="start()" >
+<input type="button" id="stop_button" value="stop" class="button-sousyoku" onclick="stop()" disabled>
+<input type="button" id="reset_button" value="reset" class="button-sousyoku" onclick="reset()" disabled>
+<br>
+</center>
+<center>
+<div>
+<div id="bargroup">
+<div class="time">:<span id="hour_value">00</span>
+<br>
+<input id="hour" type = "range" min = "0" max = "99" step = "1" value = "0"style="width: 200px;height:auto">
+<br>
+</div>
+<div class="time">:<span id="minute_value">00</span>
+<br>
+<input id="minute" type="range" min="0" max="59" step="1"  value="0" style="width: 200px;height:auto">
+<br>
+</div>
+<div class="time">:<span id="second_value">30</span>
+<br>
+<input id="second" type="range" min="0" max="59" step="1" value="30"  style="width: 200px;height:auto"><br>
+</div>
+</div>
+
+</div>
+    </center>
+<script>
+  var time2 = document.getElementsByClassName('time');
+  var time_display=document.getElementsByClassName("time_display");
+  function rangeValue(time, target, target2) {
+    return function(){
+        if(time.value >= 10){
+                 target.innerHTML = time.value;
+                    target2.innerHTML = time.value;
+           }else{
+               target.innerHTML = "0"+time.value;
+                    target2.innerHTML = "0"+time.value;
+           }
+    }
+  }
+  for(var i = 0; i<time2.length;i++){
+      bar=time2[i].getElementsByTagName("input")[0];
+      target=time2[i].getElementsByTagName("span")[0];
+      target2=time_display[i].getElementsByTagName("span")[0];
+      bar.addEventListener("input",rangeValue(bar,target,target2));
+  }
+        
+        function timeAll(){
+            var hour_all = document.getElementById("hour").value;
+            var minute_all = document.getElementById("minute").value;
+            var second_all = document.getElementById("second").value;
+            var all = Number(hour_all*3600)+Number(minute_all*60)+Number(second_all);
+            return all;
+        }
+        
+        var ontheway = false;
+        var onthewayallsec = 0;
+        
+        function start(){
+            document.getElementById("bargroup").style.visibility ="hidden";
+            document.getElementById("start_button").disabled="disabled";
+            document.getElementById("reset_button").disabled="disabled";
+            document.getElementById("stop_button").disabled=""
+            if(ontheway == false){
+                          var allsec = timeAll(); 
+               }else{
+                   var allsec = onthewayallsec;
+               }
+            ontheway = false;
+            var dt = new Date();
+            var endDt = new Date(dt.getTime() + allsec * 1000);
+            hour = Math.floor(allsec/3600);
+            if(hour < 10){
+            largehour.innerHTML="0"+hour;
+               }else{
+               largehour.innerHTML=hour;
+               }
+            hour_remainder =Math.floor(allsec%3600);
+            minute = Math.floor(hour_remainder/60);
+            if(minute < 10){
+            largeminute.innerHTML="0"+minute;
+               }else{
+               largeminute.innerHTML=minute;
+               }
+            sec=Math.floor(hour_remainder%60);
+      if(sec < 10){
+            largesecond.innerHTML="0"+sec;
+               }else{
+               largesecond.innerHTML=sec;
+               }
+  var count_down = setInterval(function(){
+    allsec = allsec-0.1;
+          dt = new Date();
+            hour = Math.floor(allsec/3600);
+            if(hour < 10){
+            largehour.innerHTML="0"+hour;
+               }else{
+               largehour.innerHTML=hour;
+               }
+            hour_remainder =Math.floor(allsec%3600);
+            minute = Math.floor(hour_remainder/60);
+            if(minute < 10){
+            largeminute.innerHTML="0"+minute;
+               }else{
+               largeminute.innerHTML=minute;
+               }
+            sec=Math.floor(hour_remainder%60);
+      if(sec < 10){
+            largesecond.innerHTML="0"+sec;
+               }else{
+               largesecond.innerHTML=sec;
+               }
+    if(dt.getTime() >= endDt.getTime()){
+      clearInterval(count_down);
+        largeminute.innerHTML=minute;
+                  playaudio();
+                  largesecond.innerHTML="00";
+          largeminute.innerHTML="00";
+          largehour.innerHTML="00";
+    }
+      if(ontheway == true){
+         clearInterval(count_down);
+         onthewayallsec = allsec;
+         }
+  }, 100);
+        }
+        
+        function stop(){
+            stopaudio();
+            ontheway = true;
+            document.getElementById("start_button").disabled="";
+            document.getElementById("reset_button").disabled="";
+            document.getElementById("stop_button").disabled="disabled"
+        }
+        
+        function reset(){
+            location.reload();
+        }
+        
+        function playaudio(){
+            document.getElementById('audio').play();
+        }
+        function stopaudio(){
+            document.getElementById('audio').pause();
+        }
+</script> 
+<audio src="file:///media/removable/KIOXIA64/08media/01MUSIC/Zattanan/%E7%95%B0%E9%82%A6%E4%BA%BA%E3%82%B7%E3%83%AB%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%89%E3%81%AE%E3%83%86%E3%83%BC%E3%83%9E%E3%80%80%E4%B9%85%E4%BF%9D%E7%94%B0%E6%97%A9%E7%B4%80.mp3" loop id="audio">現環境では終了時にアラームが鳴りません</audio>
+</div>
+</div>
+
+
+</body>
+
+<div class="details-contents">
+		<details>
+			<summary>︙</summary>
+			<p>
+			<input type="button" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" class="button-sousyoku">
+			<input type="button" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')" class="button-sousyoku">
+			<input type="button" value="ProMode" onClick="changeColor('#00FF00', '#000000')" class="button-sousyoku">
+			</p>
+			<p>Watch://Timer　Manegimented by TADR.　Scince 2022.10.1 TechnicalSupport by SEI2324
+				<a href="https://sites.google.com/edu.nishiyamato.ed.jp/watch/rn">Release Notes</a>
+				<button onclick="window.open('https://sites.google.com/edu.nishiyamato.ed.jp/watch/top', '_blank', 'location=no')" style="background-color: var(--bgColor); color: var(--mainColor);" class="button-sousyoku">Open New Tab(temp)</button>
+
+			</p>
+		</details>
+	</div>
+</html>
