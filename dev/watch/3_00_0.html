@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<style>
+	details {
+  		border: 0px solid #aaa;
+  		border-radius: 4px;
+  		padding: 0.5em 0.5em 0;
+	}
+
+	summary {
+  		font-weight: bold;
+  		margin: -0.5em -0.5em 0;
+  		padding: 0.5em;
+		list-style:none;
+	}
+
+	details[open] {
+  		padding: 0.5em;
+	}
+
+	details[open] summary {
+  		border-bottom: 0px solid #aaa;
+  		margin-bottom: 0.5em;
+	}
+	</style>
+
+	<script>
+	function updateClock() {
+		var now = new Date();
+		var hour = now.getHours();
+		var minute = now.getMinutes();
+		var second = now.getSeconds();
+		if ( hour < 10 ) hour = "0" + hour;
+		if ( minute < 10 ) minute = "0" + minute;
+		if ( second < 10 ) second = "0" + second;
+		document.getElementById('myClock').innerHTML = hour+":"+minute+":"+second;
+	}
+	
+	function start() {
+		setInterval("updateClock();", 1000);
+		updateClock();
+	}
+
+	function color1(){
+		document.bgColor = "#000000"; // bgcolor：背景色
+		document.fgColor = "#FFFFFF"; // text：文字の基本色
+	}
+
+	function color2(){
+			document.bgColor = "#FFFFFF";
+			document.fgColor = "#000000";	
+	}
+	
+	function color3(){
+		document.bgColor = "#000000"; // bgcolor：背景色
+		document.fgColor = "#00ff00"; // text：文字の基本色
+	}
+
+	</script>
+</head>
+<body onload="start()">
+	<div id="myClock" align="center"   style="font: 15em Lato">
+	</div>
+	<details>
+		<summary>︙</summary>
+		<p>
+		<input type="button" value="DarkMode" onClick="color1()">
+		<input type="button" value="LightMode" onClick="color2()">
+		<input type="button" value="ProMode" onClick="color3()">
+		</p>
+		<p>Watch://Timer　Manegimented by TADR.　Scince 2022.10.1
+			<a href="https://sites.google.com/edu.nishiyamato.ed.jp/watch/rn">Release Notes</a>
+		</p>
+	</details>
+	<h1 style="text-align:center">
+		<script>
+			var today=new Date(); 
+			var year = today.getFullYear();
+			var month = today.getMonth()+1;
+			var week = today.getDay();
+			var day = today.getDate();
+			var week_ja= new Array("日","月","火","水","木","金","土");
+			document.write(year+"年"+month+"月"+day+"日 "+week_ja[week]+"曜日");
+		</script>
+	</h1>
+</body>
+</html>
