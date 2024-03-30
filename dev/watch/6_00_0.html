@@ -84,7 +84,6 @@
  
 .tab_class {
   opacity: 30%;
-  z-index: 100;
   background-color: var(--bgColor);
   position: sticky;
   top: 0;
@@ -115,7 +114,6 @@ input:checked + .tab_class + .content_class {
 html {
   font-family: 'Lato';
   font-size: 16px;
-  background-color: var(--bgColor);
 }
 
 
@@ -220,7 +218,7 @@ html {
 
 .a-contents-button{
   background-color: var(--bgColor);
-  height: 160px;
+  height: ;
   margin: 4px;
   padding: 4px;
     border-radius: 4px;
@@ -821,9 +819,20 @@ html {
       <div class="content_class">
         <div  class="timer-contents">
           <center>
-            <span id="time" class="timer-contents">00:00:00</span><span id="mtime" class="timer-contents-a">.000</span>
+            <span id="time" class="timer-contents">00:00:00</span><span id="mtime" class="timer-contents-a" >.000</span>
             <!--<span class="timer-contents-a">.000</span>-->
           </center>
+        <script>  
+          const changeDisplay = () => {
+  var ele = document.getElementById('mtime');
+ 
+  if (ele.style.display == 'none') {
+   ele.style.display = 'inline-block'; 
+  } else {
+    ele.style.display = 'none';
+  }
+};
+          </script>
         </div>
         <div id="buttons">
           <input id="start" type="button" value="start" class="button-select">
@@ -1809,11 +1818,12 @@ function handleKeydown(event){
 <label class="popup-open2" for="popup2">⊕</label>
 <div class="popup-overlay2">
     <div class="popup-window2">
-      <div class="a-contents"><h2>Settings</h2>
+      <div class="a-contents"><h2>｜Timer Settings</h2>
       </div>
 				<div class="a-contents-button">
-          <center> <div> <div id="bargroup"> <div class="time"><b>H </b><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag" ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div> <div class="time"><b>M </b><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges"/></div> <div class="time"><b>S </b><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/></center>
-				</div>
+          <center> <div> <div id="bargroup"> <div class="time"><b>H </b><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag" ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div> <div class="time"><b>M </b><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges"/></div> <div class="time"><b>S </b><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/></center></div>
+                     
+
 				<label class="popup-close2" for="popup2">
 					<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
 						<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
@@ -2118,6 +2128,10 @@ function stopaudio(){
           <input type="color"  id="change_bgColor" class="button-sousyoku">
           <input type="color"  id="change_mainColor" class="button-sousyoku">
 			</p>
+      <p class="a-contents">
+        <a class="a-contents">Custom Digits</a>
+         <button class="button-sousyoku" onclick="changeDisplay()" style="cursor: pointer;">00:00:00↔00:00:00:000</button>
+      </p>
 			<p class="a-contents">
 				<a class="a-contents">Functions</a>
 				<button onclick="window.open('https://nikonosfive.github.io/dev/watch/6_00_0.html', '_blank', 'location=no')" class="button-sousyoku">Open As a New Tab</button>
@@ -2154,10 +2168,10 @@ function stopaudio(){
 				</p>
 				<div class="a-contents-button">
 					<p class="a-contents">
-					  	<p class="inside">Watch://Timer by TADR, SEI2423</p>
-						<p class="inside"> <a>Ver.6.00.1(2024.3.28)</a><a href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a></p>
-					  	<p class="inside">音源：甘茶の音楽工房様（https://amachamusic.chagasi.com/）</p>
-						<p class="inside">キー操作は他の機能を表示していても反応します。←キーでストップウォッチスタート、↑キーでストップ、→キーでリセット、↓キーでラップ、Qキーでタイマースタート、Wキーでタイマーストップ、Eキーでタイマーリセットです。</p>
+					  	<a class="inside">Watch://Timer by TADR, SEI2423</a>
+						 <a class="inside">Ver.6.00.1(2024.3.28)</a><a class="inside"　href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a><br>
+            <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a><br>
+						<a class="inside">キー操作は他の機能を表示していても反応します。←:Start S.W、↑:Stop S.W、→：Reset S.W、↓:Lap 、Q:Start Timer、W:Stop Timer、E:Reset Timer</a>
 					</p>
 				</div>
 				<label class="popup-close" for="popup">
