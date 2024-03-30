@@ -833,6 +833,18 @@ html {
   }
 };
           </script>
+          <script>  
+          const changeDisplayR = () => {
+  var ele = document.getElementById('rapdiv');
+ 
+  if (ele.style.display == 'none') {
+   ele.style.display = 'inline-block'; 
+  } else {
+    ele.style.display = 'none';
+  }
+};
+          </script>
+          
         </div>
         <div id="buttons">
           <input id="start" type="button" value="start" class="button-select">
@@ -840,8 +852,11 @@ html {
           <input id="reset" type="button" value="reset" class="button-select" disabled>
         </div>
         <center>
+        <div id=rapdiv>
           <input id="rap" type="button" value="lap" class="button-select-a" disabled>
-          <span id="rtime" class="timer-contents-b">00:00:00.000</span></center>
+          <span id="rtime" class="timer-contents-b">00:00:00.000</span>
+        </div>
+          </center>
           <script>
   const time = document.getElementById('time');
   const startButton = document.getElementById('start');
@@ -2129,8 +2144,9 @@ function stopaudio(){
           <input type="color"  id="change_mainColor" class="button-sousyoku">
 			</p>
       <p class="a-contents">
-        <a class="a-contents">Custom Digits</a>
-         <button class="button-sousyoku" onclick="changeDisplay()" style="cursor: pointer;">00:00:00↔00:00:00:000</button>
+        <a class="a-contents">Custom S.W</a>
+         <button class="button-sousyoku" onclick="changeDisplay()" style="cursor: pointer;">Digits ON/OFF</button>
+        <button class="button-sousyoku" onclick="changeDisplayR()" style="cursor: pointer;">Lap ON/OFF</button>
       </p>
 			<p class="a-contents">
 				<a class="a-contents">Functions</a>
@@ -2168,10 +2184,10 @@ function stopaudio(){
 				</p>
 				<div class="a-contents-button">
 					<p class="a-contents">
-					  	<a class="inside">W:T byTADR,SEI2423</a>
-						 <a class="inside">v6.10.0(2024.3.30)</a><a href="https://sites.google.com/view/tadr-tech/blog" class="inside"> Release Notes </a><br>
+					  	<a class="inside">Watch://Timer by TADR, SEI2423</a>
+						 <a class="inside">Ver.6.00.1(2024.3.28)</a><a class="inside"　href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a><br>
             <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a><br>
-						<a class="inside">キーは多機能表示中も機能します。←:Start S.W、↑:Stop S.W、→：Reset S.W、↓:Lap 、Q:Start Timer、W:Stop Timer、E:Reset Timer</a>
+						<a class="inside">キー操作は他の機能を表示していても反応します。←:Start S.W、↑:Stop S.W、→：Reset S.W、↓:Lap 、Q:Start Timer、W:Stop Timer、E:Reset Timer</a>
 					</p>
 				</div>
 				<label class="popup-close" for="popup">
