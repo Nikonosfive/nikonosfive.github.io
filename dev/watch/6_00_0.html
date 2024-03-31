@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="jp">
 <head>
@@ -15,41 +16,9 @@
   COOKIE.set = function(key, value) {
     throw Error('This map was freezed.');
   };
-  
-  
-	
+
 </script>
 <style>
- .wrap{
-
-}
-#card{
-  margin: auto;
-  width: 100vw;
-  perspective: 0px;
-  transform-style: preserve-3d;
-  transition: transform .8s;
-}
-
-.card-front, .card-back{
-  margin: auto;
-  width: 100vw;
-  position: absolute;
-  backface-visibility: hidden;
-  padding-top: 20px;
-  text-align: center;
-}
-
-.card-front{
-  transform: rotateY(180deg);
-}
-
-.card-back{
-}
-
-.mekuru{
-  transform: rotateY(180deg)
-}
 
 
 .area > input:checked + label {
@@ -63,9 +32,9 @@
 }
 
 .inside{
-	padding: 0 4px 0 4px;
+padding: 0 4px 0 4px;
 }
-	
+
 .area {
   width: 100%;
   margin: auto;
@@ -80,10 +49,11 @@
 }
   .tab_class:hover{
     opacity: 100%;
-  } 
+  }
  
 .tab_class {
   opacity: 30%;
+  z-index: 100;
   background-color: var(--bgColor);
   position: sticky;
   top: 0;
@@ -95,7 +65,7 @@
   display: block;
   float: left;
   order: -1;
-  z-index: 5;   
+  z-index: 5;  
 }
 
 input[name="tab_name"] {
@@ -114,6 +84,7 @@ input:checked + .tab_class + .content_class {
 html {
   font-family: 'Lato';
   font-size: 16px;
+  background-color: var(--bgColor);
 }
 
 
@@ -151,7 +122,7 @@ html {
   font-size: 2vw;
 }
 
-  
+ 
 .button-select-a{
   color: var(--bgColor);
   background-color: var(--mainColor);
@@ -203,22 +174,22 @@ html {
 .ranges::-webkit-slider-thumb {
   appearance:none;
   background-color: var(--mainColor);
-  width:15px; 
+  width:15px;
   height:15px;
-  border-radius:50%; 
+  border-radius:50%;
 }
-  
+ 
 .a-contents{
   color: var(--mainColor);
   background-color: var(--bgColor);
   border-radius: 4px;
   margin: 4px;
   padding: 4px;
-} 
+}
 
 .a-contents-button{
   background-color: var(--bgColor);
-  height: ;
+  height: 160px;
   margin: 4px;
   padding: 4px;
     border-radius: 4px;
@@ -252,88 +223,26 @@ html {
   vertical-align: middle;
 }
 
-
-  
- #popup2 {
-  display: none; 
-}
-
-.popup-open2 {
-  cursor: pointer; 
-  font-size: 36px;
-  position: fixed;
-  top: 150px;
-  right: 10px;
-  opacity: 35%;
-  z-index: 10;   
-}
-  
-  .popup-open2:hover{
-    opacity: 100%;
-  }
-
-.popup-overlay2 {
-  display: none; 
-}
-
-#popup2:checked ~ .popup-overlay2 {
-  display: block;
-  z-index: 99999;
-  background-color: #22222290;
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-}
-
-.popup-window2 {
-  width: 90vw;
-  max-width: 600px;
-  padding: 20px;
-  background-color: #33333399;
-  border-radius: 6px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.popup-text2 {
-  margin: 0;
-}
-
-.popup-text2:not(:last-of-type) {
-  margin-bottom: 1em
-}
-
-.popup-close2 {
-  cursor: pointer;
-  position: absolute;
-  top: 6px;
-  right: 6px;
-}
-  
 #popup {
-  display: none; 
+  display: none;
 }
 
 .popup-open {
-  cursor: pointer; 
+  cursor: pointer;
   font-size: 24px;
   position: fixed;
   top: 13px;
   right: 10px;
   opacity: 35%;
-  z-index: 10;   
+  z-index: 10;  
 }
-  
+ 
   .popup-open:hover{
     opacity: 100%;
   }
 
 .popup-overlay {
-  display: none; 
+  display: none;
 }
 
 #popup:checked ~ .popup-overlay {
@@ -373,7 +282,7 @@ html {
   top: 6px;
   right: 6px;
 }
-  
+
 </style>
 </head>
 
@@ -819,32 +728,9 @@ html {
       <div class="content_class">
         <div  class="timer-contents">
           <center>
-            <span id="time" class="timer-contents">00:00:00</span><span id="mtime" class="timer-contents-a" >.000</span>
+            <span id="time" class="timer-contents">00:00:00</span><span id="mtime" class="timer-contents-a">.000</span>
             <!--<span class="timer-contents-a">.000</span>-->
           </center>
-        <script>  
-          const changeDisplay = () => {
-  var ele = document.getElementById('mtime');
- 
-  if (ele.style.display == 'none') {
-   ele.style.display = 'inline-block'; 
-  } else {
-    ele.style.display = 'none';
-  }
-};
-          </script>
-          <script>  
-          const changeDisplayR = () => {
-  var ele = document.getElementById('rapdiv');
- 
-  if (ele.style.display == 'none') {
-   ele.style.display = 'inline-block'; 
-  } else {
-    ele.style.display = 'none';
-  }
-};
-          </script>
-          
         </div>
         <div id="buttons">
           <input id="start" type="button" value="start" class="button-select">
@@ -852,11 +738,8 @@ html {
           <input id="reset" type="button" value="reset" class="button-select" disabled>
         </div>
         <center>
-        <div id=rapdiv>
           <input id="rap" type="button" value="lap" class="button-select-a" disabled>
-          <span id="rtime" class="timer-contents-b">00:00:00.000</span>
-        </div>
-          </center>
+          <span id="rtime" class="timer-contents-b">00:00:00.000</span></center>
           <script>
   const time = document.getElementById('time');
   const startButton = document.getElementById('start');
@@ -907,10 +790,10 @@ function handleKeydown(event){
     resetButton.disabled = false;
     rapButton.disabled = true;
     clearTimeout(timeoutID);
-    stopTime += (Date.now() - startTime); 
+    stopTime += (Date.now() - startTime);
   }
 
-  if (keyCode == 39) {
+  if (!resetButton.disabled && keyCode == 39) {
   startButton.disabled = false;
     stopButton.disabled = true;
     resetButton.disabled = true;
@@ -920,7 +803,7 @@ function handleKeydown(event){
     rtime.textContent = '00:00:00.000'
     stopTime = 0;
   }
-  if (keyCode == 40) {
+  if (!rapButton.disabled && keyCode == 40) {
     startButton.disabled = true;
     stopButton.disabled = false;
     resetButton.disabled = true;
@@ -935,7 +818,7 @@ function handleKeydown(event){
     rtime.textContent = `${h}:${m}:${s}.${ms}`;
   }
 }
-            
+           
   // スタートボタンがクリックされたら時間を進める
   startButton.addEventListener('click', () => {
     startButton.disabled = true;
@@ -1520,18 +1403,10 @@ function handleKeydown(event){
   start();
             </script>
           </div>
-          
-          <div class="wrap">
-            
-            
-            
-            
-  <div class="" id="card">
-    <div class="card-front">
-       <div class="date-contents">
+          <div class="date-contents">
             <p style="text-align:center">
               <script>
-        var today=new Date(); 
+        var today=new Date();
         var year = today.getFullYear();
         var month = today.getMonth()+1;
         var week = today.getDay();
@@ -1541,50 +1416,7 @@ function handleKeydown(event){
               </script>
             </p>
           </div>
-    </div>
-    <div class="card-back">
-       <div class="date-contents">
-            <p style="text-align:center">
-              <script>
-        var today=new Date(); 
-        var year = today.getFullYear();
-        var month = today.getMonth()+1;
-        var week = today.getDay();
-        var day = today.getDate();
-        var week_ja= new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
-        document.write(year+" "+month+"/"+day+" "+week_ja[week]+"");
-              </script>
-            </p>
-          </div>
-    </div>
-  </div>
-</div>
 
-  <script
-    src="https://code.jquery.com/jquery-3.5.0.js"
-    integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
-    crossorigin="anonymous"></script>
-          <script>
-            $(function(){
- console.log("tamaki")
-    var card = document.getElementById('card');
-    card.addEventListener('click', function() {
-      turnover();
-    });
- 
-    function turnover() {
-      if(card.className = card.className === ''){
-        card.className = 'mekuru';
-      }else{
-        card.className = '';
-      }
-    }
-})
-          </script>
-          
-          
-         
-			 		
         </div>
         <input type="radio" name="tab_name" tabindex="0" id="tab3">
         <label class="tab_class" for="tab3" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-settings"  viewBox="0.00 0.00 300 300">
@@ -1827,29 +1659,15 @@ function handleKeydown(event){
           <input type="button" id="stop_button" value="stop" class="button-select" onclick="stop()" disabled>
           <input type="button" id="reset_button" value="reset" class="button-select" onclick="reset()" disabled>
         </center>
-        
-<!--Section -->
-<input type="checkbox" id="popup2">
-<label class="popup-open2" for="popup2">⊕</label>
-<div class="popup-overlay2">
-    <div class="popup-window2">
-      <div class="a-contents"><h2>｜Timer Settings</h2>
-      </div>
-				<div class="a-contents-button">
-          <center> <div> <div id="bargroup"> <div class="time"><b>H </b><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag" ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div> <div class="time"><b>M </b><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges"/></div> <div class="time"><b>S </b><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/></center></div>
-                     
-
-				<label class="popup-close2" for="popup2">
-					<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-						<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-						<line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
-					</svg>
-				</label>
-    </div>
-</div>
-          
-          
-          
+        <center>
+          <div>
+            <div id="bargroup">
+              <div class="time"><input type="number" id="hour" min ="00" max ="99" step ="1" value="0" class="input-tag"  ><input id="hour" type="range" min="00" max ="99" step="1" value="0" class="ranges"/></div>
+              <div class="time"><input type="number" id="minute" min="00" max="59" step ="1" value= "0" class="input-tag" ><input id="minute" type="range" min="00" max="59" step="1"  value="0" class="ranges"/></div>
+              <div class="time"><input type="number" id="second" min="00" max="59" step ="1" value= "30" class="input-tag" ><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges"/><br><br></div>
+            </div>
+          </div>
+        </center>
         <script>
   var time2 = document.getElementsByClassName('time');
   var time_display=document.getElementsByClassName("time_display");
@@ -1891,8 +1709,8 @@ function handleKeydown(event){
 
   var ontheway = false;
   var onthewayallsec = 0;
-          
-  
+         
+ 
 
   function start(){
     document.getElementById("bargroup").style.visibility ="hidden";
@@ -1901,7 +1719,7 @@ function handleKeydown(event){
     document.getElementById("stop_button").disabled="";
 
     if(ontheway == false){
-      var allsec = timeAll(); 
+      var allsec = timeAll();
     } else {
       var allsec = onthewayallsec;
     }
@@ -1990,7 +1808,7 @@ function stop(){
   document.getElementById("stop_button").disabled="disabled"
   document.getElementById("bargroup").style.visibility = "";
 }
-        
+       
 function reset(){
   ontheway = false;
   onthewayallsec = 0;
@@ -2013,7 +1831,7 @@ function handleKeydown(event){
     document.getElementById("stop_button").disabled="";
 
     if(ontheway == false){
-      var allsec = timeAll(); 
+      var allsec = timeAll();
     } else {
       var allsec = onthewayallsec;
     }
@@ -2113,7 +1931,7 @@ function handleKeydown(event){
   }
   }
 }          
-          
+         
 function playaudio(){
   document.getElementById('audio').play?.();
 }
@@ -2121,39 +1939,34 @@ function playaudio(){
 function stopaudio(){
   document.getElementById('audio').pause();
 }
-        </script> 
+        </script>
         <audio loop src="https://nikonosfive.github.io/dev/watch/sekibaku.mp3" loop id="audio">現環境では終了時にアラームが鳴りません</audio>
       </div>
     </div>
-	 
+
 <!--Section -->
-		  <input type="checkbox" id="popup">
+ <input type="checkbox" id="popup">
 <label class="popup-open" for="popup">︙</label>
 <div class="popup-overlay">
     <div class="popup-window">
         <p class="popup-text">
-			<p class="a-contents"><a class="a-contents">Color presets</a>
+<p class="a-contents"><a class="a-contents">Color presets</a>
           <input type="button" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" class="button-sousyoku" id="osareta">
           <input type="button" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')" class="button-sousyoku">
           <input type="button" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')" class="button-sousyoku">
           <input type="button" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')" class="button-sousyoku">
-			</p>
-			<p class="a-contents">
+</p>
+<p class="a-contents">
           <a class="a-contents">Custom color settings</a>
           <input type="color"  id="change_bgColor" class="button-sousyoku">
           <input type="color"  id="change_mainColor" class="button-sousyoku">
-			</p>
-      <p class="a-contents">
-        <a class="a-contents">Custom S.W</a>
-         <button class="button-sousyoku" onclick="changeDisplay()" style="cursor: pointer;">Digits ON/OFF</button>
-        <button class="button-sousyoku" onclick="changeDisplayR()" style="cursor: pointer;">Lap ON/OFF</button>
-      </p>
-			<p class="a-contents">
-				<a class="a-contents">Functions</a>
-				<button onclick="window.open('https://nikonosfive.github.io/dev/watch/6_00_0.html', '_blank', 'location=no')" class="button-sousyoku">Open As a New Tab</button>
-				<button id="button1" class="button-sousyoku">Full Screen</button>
-				<button id="button2" class="button-sousyoku">Exit Full Screen</button>
-				<script>
+</p>
+<p class="a-contents">
+<a class="a-contents">Functions</a>
+<button onclick="window.open('https://nikonosfive.github.io/dev/watch/6_00_0.html', '_blank', 'location=no')" class="button-sousyoku">Open As a New Tab</button>
+<button id="button1" class="button-sousyoku">Full Screen</button>
+<button id="button2" class="button-sousyoku">Exit Full Screen</button>
+<script>
   window.onload = function(){
     document.getElementById("osareta").click();
 
@@ -2180,24 +1993,24 @@ function stopaudio(){
       document.exitFullscreen();
     });
   });
-				</script>
-				</p>
-				<div class="a-contents-button">
-					<p class="a-contents">
-					  	<a class="inside">Watch://Timer by TADR, SEI2423</a>
-						 <a class="inside">Ver.6.00.1(2024.3.28)</a><a class="inside"　href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a><br>
-            <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a><br>
-						<a class="inside">キー操作は他の機能を表示していても反応します。←:Start S.W、↑:Stop S.W、→：Reset S.W、↓:Lap 、Q:Start Timer、W:Stop Timer、E:Reset Timer</a>
-					</p>
-				</div>
-				<label class="popup-close" for="popup">
-					<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-						<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-						<line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
-					</svg>
-				</label>
+</script>
+</p>
+<div class="a-contents-button">
+<p class="a-contents">
+  <p class="inside">Watch://Timer by TADR, SEI2423</p>
+<p class="inside"> <a>Ver.6.00.1(2024.3.28)</a><a href="https://sites.google.com/view/tadr-tech/blog" class=""> Release Notes </a></p>
+  <p class="inside">音源：甘茶の音楽工房様（https://amachamusic.chagasi.com/）</p>
+<p class="inside">キー操作は他の機能を表示していても反応します。←キーでストップウォッチスタート、↑キーでストップ、→キーでリセット、↓キーでラップ、Qキーでタイマースタート、Wキーでタイマーストップ、Eキーでタイマーリセットです。</p>
+</p>
+</div>
+<label class="popup-close" for="popup">
+<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
+<line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
+</svg>
+</label>
     </div>
 </div>
-    </div> 
+    </div>
 </body>
 </html>
