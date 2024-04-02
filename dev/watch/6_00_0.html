@@ -49,18 +49,24 @@
       justify-content: center;
       align-items: center;
       color: var(--mainColor);
+      opacity: 35%;
+    }
+
+    .Menu-Item-Label:hover {
+      opacity: 100%;
     }
 
     .SubMenu {
+      box-shadow: 1px 2px 10px 0px var(--mainColor);
       display: block;
       visibility: hidden;
       position: absolute;
-      left: -510px;
+      left: -511px;
       top: 15px;
       width: auto;
       background-color: var(--bgColor);
-      border: 1px solid;
-      border-radius: 5px;
+      border: 0px solid;
+      border-radius: 10px;
       border-color: var(--mainColor);
     }
 
@@ -211,6 +217,7 @@
       border-radius: 5px;
       font-size: 18px;
       border-color: var(--mainColor);
+      border: 1px solid;
     }
 
     .button-select {
@@ -440,11 +447,12 @@
           <li class="SubMenu-Item">
             <div class="a-contents-button">
               <p class="a-contents">
-                <a class="inside">W:T by TADR, SEI2423</a>
+                <a class="inside">Watch://Timer by TADR, SEI2423</a>
                 <a class="inside">Ver.6.20.1(2024.4.2)</a>
                 <a class="inside" href="https://sites.google.com/view/tadr-tech/blog">Release Notes</a><br>
                 <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a><br>
-                <a class="inside">キー操作は他の機能を表示していても反応します。←:Start S.W、↑:Stop S.W、→：Reset S.W、↓:Lap 、Q:Start Timer、W:Stop Timer、E:Reset Timer</a>
+                <a class="inside">キー操作は他の機能を表示していても反応します。<br>←:Start S.W|↑:Stop S.W|→:Reset S.W|↓:Lap|Q:Start Timer|W:Stop Timer|E:Reset Timer</a><br>
+                <a class="inside">横幅600px未満のウインドウサイズにすると、設定画面の表示が見切れます。</a>
               </p>
             </div>
           </li>
