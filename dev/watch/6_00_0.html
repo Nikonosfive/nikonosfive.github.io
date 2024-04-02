@@ -17,79 +17,79 @@
     };
   </script>
   <style>
-    nav{
+    nav {
       height: 0px;
       width: 0px;
     }
+
     .DropdownMenu {
       width: 25px;
-   float: right;
+      float: right;
     }
 
-.Menu {
-  width: -60vw;
-  display: flex;
-
-}
-
-
-.Menu-Item {
- z-index: 99;
-  position: relative;
-  cursor: pointer;
-}
-
-.Menu-Item-Label {
-  position: relative;
-  font-size: 24px;
-  z-index: 99;
-  width: 20px;
-  height: 30px;
-  top: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--mainColor);
-}
-
-.SubMenu {
-  
-  visibility: hidden;
-  position: absolute;
-  left: -60vw;
-  top: 15px;
-  width: auto;
-  background-color: var(--bgColor);
-  border: 1px solid;
-  border-radius: 5px;
-  border-color: var(--mainColor);
+    .Menu {
+      width: -60%;
+      display: flex;
     }
 
-.SubMenu-Item {
-  width: 58vw;
-  padding: 5px;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
+    .Menu-Item {
+      z-index: 99;
+      position: relative;
+      cursor: pointer;
+    }
 
-.SubMenu > * + * {
-  border-top: 1px solid ;
-  border-color: var(--mainColor)
-}
+    .Menu-Item-Label {
+      position: relative;
+      font-size: 24px;
+      z-index: 99;
+      width: 5px;
+      height: 30px;
+      top: 15px;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      color: var(--mainColor);
+    }
 
-.Menu-Item:hover .SubMenu {
-  transition: all 0.4s;
-  visibility: visible;
-}
+    .SubMenu {
+      display: block;
+      visibility: hidden;
+      position: absolute;
+      left: -510px;
+      top: 15px;
+      width: auto;
+      background-color: var(--bgColor);
+      border: 1px solid;
+      border-radius: 5px;
+      border-color: var(--mainColor);
+    }
 
-li{
-  list-style:none;
-}
+    .SubMenu-Item {
+      width: 500px;
+      padding: 5px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
 
-ul{
-  padding-left:0;
-}
+    .SubMenu>*+* {
+      border-top: 1px solid;
+      border-color: var(--mainColor)
+    }
+
+    .Menu-Item:hover .SubMenu {
+      transition: all 0.4s;
+      visibility: visible;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    ul {
+      padding-left: 0;
+    }
+
     .wrap {}
 
     #card {
@@ -383,75 +383,75 @@ ul{
 
 <body class="tempo">
   <nav class="DropdownMenu">
-  <ul class="Menu">
-    <li class="Menu-Item">
-      <span class="Menu-Item-Label">︙</span>
-      <ul class="SubMenu">
-        <li class="SubMenu-Item">
-        <p class="a-contents">
-          <a class="a-contents">Color settings</a>
-          <input type="color" id="change_bgColor" class="button-sousyoku">
-          <input type="color" id="change_mainColor" class="button-sousyoku">
-          <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/w_b.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" id="osareta">
-          <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_w.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')" >
-          <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/bl_g.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')" >
-          <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_gr.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')" >
-        </p>   
-             </li>
-        <li class="SubMenu-Item">
-         <p class="a-contents">
-          <a class="a-contents">Custom S.W</a>
-          <button class="button-sousyoku" onclick="changeDisplay()" style="cursor: pointer;">0.000 ↔ 0</button>
-          <button class="button-sousyoku" onclick="changeDisplayR()" style="cursor: pointer;">Lap ON/OFF</button>
-        </p>
-        </li>
-        <li class="SubMenu-Item">
-          <p class="a-contents">
-          <a class="a-contents">Functions</a>
-          <button onclick="window.open('https://nikonosfive.github.io/dev/watch/6_00_0.html', '_blank', 'location=no')" class="button-sousyoku">New Tab</button>
-          <button id="button1" class="button-sousyoku">Full Screen</button>
-          <button id="button2" class="button-sousyoku">Exit Full Screen</button>
-          <script>
-            window.onload = function() {
-              document.getElementById("osareta").click();
+    <ul class="Menu">
+      <li class="Menu-Item">
+        <span class="Menu-Item-Label">︙</span>
+        <ul class="SubMenu">
+          <li class="SubMenu-Item">
+            <p class="a-contents">
+              <a class="a-contents">Color settings</a>
+              <input type="color" id="change_bgColor" class="button-sousyoku">
+              <input type="color" id="change_mainColor" class="button-sousyoku">
+              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/w_b.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" id="osareta">
+              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_w.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')">
+              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/bl_g.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')">
+              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_gr.svg" style="width: 30px; heigth: 30px; padding: 5px; vertical-align: middle; border: 1px solid; border-color: var(--mainColor); border-radius: 5px;" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')">
+            </p>
+          </li>
+          <li class="SubMenu-Item">
+            <p class="a-contents">
+              <a class="a-contents">Custom S.W</a>
+              <button class="button-sousyoku" onclick="changeDisplay()" style="cursor: pointer;">0.000 ↔ 0</button>
+              <button class="button-sousyoku" onclick="changeDisplayR()" style="cursor: pointer;">Lap ON/OFF</button>
+            </p>
+          </li>
+          <li class="SubMenu-Item">
+            <p class="a-contents">
+              <a class="a-contents">Functions</a>
+              <button onclick="window.open('https://nikonosfive.github.io/dev/watch/6_00_0.html', '_blank', 'location=no')" class="button-sousyoku">New Tab</button>
+              <button id="button1" class="button-sousyoku">Full Screen</button>
+              <button id="button2" class="button-sousyoku">Exit Full Screen</button>
+              <script>
+                window.onload = function() {
+                  document.getElementById("osareta").click();
 
-              function set_color(e) {
-                document.body.style.setProperty('--' + e.target.id.slice(7), e.target.value);
-              }
-              [change_bgColor, change_mainColor].forEach(x => x.addEventListener('change', set_color));
-              if (COOKIE.get('stopwatch')) {
-                startButton.click();
-              }
-              if (COOKIE.get('timer')) {
-                start_button.click();
-              }
-            }
-            window.addEventListener('load', function() {
-              document.getElementById('button1').addEventListener('click', function() {
-                document.body.requestFullscreen();
-              });
-              document.getElementById('button2').addEventListener('click', function() {
-                document.exitFullscreen();
-              });
-            });
-          </script>
-        </p>
-        </li>
-        <li class="SubMenu-Item">
-          <div class="a-contents-button">
-          <p class="a-contents">
-            <a class="inside">W:T by TADR, SEI2423</a>
-            <a class="inside">Ver.6.20.1(2024.4.2)</a>
-            <a class="inside" href="https://sites.google.com/view/tadr-tech/blog">Release Notes</a><br>
-            <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a><br>
-            <a class="inside">キー操作は他の機能を表示していても反応します。←:Start S.W、↑:Stop S.W、→：Reset S.W、↓:Lap 、Q:Start Timer、W:Stop Timer、E:Reset Timer</a>
-          </p>
-        </div>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+                  function set_color(e) {
+                    document.body.style.setProperty('--' + e.target.id.slice(7), e.target.value);
+                  }
+                  [change_bgColor, change_mainColor].forEach(x => x.addEventListener('change', set_color));
+                  if (COOKIE.get('stopwatch')) {
+                    startButton.click();
+                  }
+                  if (COOKIE.get('timer')) {
+                    start_button.click();
+                  }
+                }
+                window.addEventListener('load', function() {
+                  document.getElementById('button1').addEventListener('click', function() {
+                    document.body.requestFullscreen();
+                  });
+                  document.getElementById('button2').addEventListener('click', function() {
+                    document.exitFullscreen();
+                  });
+                });
+              </script>
+            </p>
+          </li>
+          <li class="SubMenu-Item">
+            <div class="a-contents-button">
+              <p class="a-contents">
+                <a class="inside">W:T by TADR, SEI2423</a>
+                <a class="inside">Ver.6.20.1(2024.4.2)</a>
+                <a class="inside" href="https://sites.google.com/view/tadr-tech/blog">Release Notes</a><br>
+                <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a><br>
+                <a class="inside">キー操作は他の機能を表示していても反応します。←:Start S.W、↑:Stop S.W、→：Reset S.W、↓:Lap 、Q:Start Timer、W:Stop Timer、E:Reset Timer</a>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
   <div class="takami">
     <div class="area">
       <input type="radio" name="tab_name" id="tab1" tabindex="0">
