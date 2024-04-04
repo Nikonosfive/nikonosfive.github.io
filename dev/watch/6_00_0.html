@@ -17,423 +17,522 @@
     };
   </script>
   <style>
-    nav {
-      height: 0px;
-    }
+    .toggle-button {
+  margin: 3px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #dddddd;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
 
-    .DropdownMenu {
-      transition: all 0.4s ease-in-out;
-      width: 100%;
-      float: left;
-      position: fixed;
-      z-index: 999;
-    }
+.toggle-button:has(:checked) {
+  background-color: #4bd865;
+}
 
-    .Menu {
-      transition: all 0.4s ease-in-out;
-      display: flex;
-      width: 100%;
-      height: 0px;
-    }
+.toggle-button::after {
+  vertical-align: middle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgb(9 9 9 / 20%);
+  background-color: #fff;
+  content: "";
+  transition: left 0.4s;
+}
 
-    .Menu-Item {
-      transition: all 0.4s ease-in-out;
-      text-align: right;
-      width: -5px;
-      z-index: 99;
-      position: relative;
-      cursor: pointer;
-      margin-left: auto;
-      margin-right: 0px;
-    }
+.toggle-button:has(:checked)::after {
+  left: 20px;
+}
 
-    .Menu-Item-Label {
-      transition: all 0.4s ease-in-out;
-      position: relative;
-      font-size: 24px;
-      z-index: 99;
-      width: auto;
-      height: 60px;
-      top: 5px;
-      display: block;
-      justify-content: center;
-      align-items: center;
-      color: var(--mainColor);
-      opacity: 35%;
-    }
+.toggle-button input {
+  display: none;
+}
 
-    .Menu-Item-Label:hover {
-      opacity: 100%;
-      transition: all 0.4s;
-    }
+.yohaku {
+  margin: 16px;
+  font-size: 1.2em;
+}
 
-    .SubMenu {
-      text-align: left;
-      height: 450px;
-      max-width: 470px;
-      overflow: scroll;
-      box-shadow: 1px 2px 10px 0px var(--mainColor);
-      display: block;
-      visibility: hidden;
-      position: absolute;
-      right: 25px;
-      top: 15px;
-      width: 50vw;
-      background-color: var(--bgColor);
-      border: 0px solid;
-      border-radius: 10px;
-      border-color: var(--mainColor);
-      transition: all 0.4s ease-in-out;
-    }
 
-    .SubMenu-Item {
-      width: auto;
-      padding: 5px;
-      display: flex;
-      justify-content: left;
-      align-items: center;
-      overflow: scroll;
-    }
+.bargroup {
+  margin: 12px;
+}
 
-    .SubMenu>*+* {
-      border-top: 1px solid;
-      border-color: var(--mainColor);
-    }
+.dropdown {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  height: 20px;
+  width: 30px;
+  z-index: 66;
+}
 
-    .Menu-Item:hover .SubMenu {
-      transition: all 0.4s;
-      visibility: visible;
-    }
+.dropdown__btn {
+  position: absolute;
+  margin-left: auto;
+  margin-right: 0px;
+  z-index: 98;
+  display: block;
+  width: 30px;
+  background: none;
+  color: var(--mainColor);
+  vertical-align: middle;
+  border: 0;
+  right: 0px;
+  height: 42px;
+  font-size: 24px;
+}
 
-    li {
-      list-style: none;
-    }
+.dropdown__btn.is-open::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  position: fixed;
+  right: 0;
+  z-index: 98;
+}
+.dropdown__btn.is-open + .dropdown__body {
+  display: block;
+  z-index: 99;
+}
+.dropdown__body {
+  display: none;
+  width: 80vw;
+  max-width: 400px;
+  background: var(--bgColor);
+  box-shadow: 1px 2px 10px 0px var(--mainColor);
 
-    ul {
-      padding-left: 0;
-    }
+  border-radius: 20px;
+  overflow: scroll;
+  position: absolute;
+  top: 13px;
+  right: 30px;
+  height: 90vh;
+  max-height: 420px;
+}
+.dropdown__list {
+  margin: 0;
+  padding: 0;
+  width: -5px;
+  z-index: 99;
+}
+.dropdown__item {
+  display: block;
+}
 
-    .wrap {}
+.yohaku:hover{
+  filter: brightness(100%);
+}
+.dropdown__item-link {
+  display: block;
+  padding: 1em 1.2em;
+  font-size: 0.95em;
+  text-decoration: none;
+  color: #444;
+}
+.dropdown__item-link:hover {
+  background: #fbfbfb;
+}
 
-    #card {
-      margin: auto;
-      width: 40vw;
-      perspective: 0px;
-      transform-style: preserve-3d;
-      transition: transform .4s;
-    }
+li {
+  list-style: none;
+}
 
-    .card-front,
-    .card-back {
-      margin: auto;
-      width: 40vw;
-      position: absolute;
-      backface-visibility: hidden;
-      padding-top: 20px;
-      text-align: center;
-    }
+ul {
+  padding-left: 0;
+}
 
-    .card-front {
-      transform: rotateY(180deg);
-    }
+#card {
+  margin: auto;
+  width: 40vw;
+  perspective: 0px;
+  transform-style: preserve-3d;
+  transition: transform 0s;
+}
 
-    .card-back {}
+.card-front,
+.card-back {
+  margin: auto;
+  width: 40vw;
+  position: absolute;
+  backface-visibility: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
 
-    .mekuru {
-      transform: rotateY(180deg)
-    }
+.card-front {
+  transform: rotateY(180deg);
+}
 
-    .area>input:checked+label {
-      font-weight: bold;
-    }
+.card-back {
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      line-height: 1.3;
-    }
+.mekuru {
+  transform: rotateY(180deg);
+}
 
-    .inside {
-      padding: 0 0px 0 0px;
-      font-size: 11px;
-    }
+.area > input:checked + label {
+  font-weight: bold;
+}
 
-    .area {
-      width: 100%;
-      margin: auto;
-      flex-wrap: wrap;
-      display: flex;
-      font-size: 11px;
-      background-color: var(--bgColor);
-    }
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
 
-    .takami {
-      height: 100vh;
-      background-color: var(--bgColor);
-    }
+.inside {
+  padding: 0 0px 0 0px;
+  font-size: 11px;
+  color: var(--mainColor);
+}
 
-    .tab_class:hover {
-      opacity: 100%;
-    }
+.area {
+  width: 100%;
+  margin: auto;
+  flex-wrap: wrap;
+  display: flex;
+  font-size: 11px;
+  background-color: var(--bgColor);
+}
 
-    .tab_class {
-      opacity: 30%;
-      background-color: var(--bgColor);
-      position: sticky;
-      top: 0;
-      width: calc(100%/3);
-      height: 60px;
-      line-height: 60px;
-      font-size: 15px;
-      text-align: center;
-      display: block;
-      float: left;
-      order: -1;
-      z-index: 5;
-    }
+.takami {
+  height: 100vh;
+  background-color: var(--bgColor);
+}
 
-    input[name="tab_name"] {
-      display: none;
-    }
+.tab_class:hover {
+  opacity: 100%;
+}
 
-    .content_class {
-      display: none;
-      width: 100%;
-    }
+.tab_class {
+  opacity: 30%;
+  background-color: var(--bgColor);
+  position: sticky;
+  top: 0;
+  width: calc(100% / 3);
+  height: 60px;
+  line-height: 60px;
+  font-size: 15px;
+  text-align: center;
+  display: block;
+  float: left;
+  order: -1;
+  z-index: 5;
+}
 
-    input:checked+.tab_class+.content_class {
-      display: block;
-    }
+input[name="tab_name"] {
+  display: none;
+}
 
-    html {
-      font-family: 'Lato';
-      font-size: 16px;
-    }
+.content_class {
+  display: none;
+  width: 100%;
+}
 
-    #buttons {
-      text-align: center;
-    }
+input:checked + .tab_class + .content_class {
+  display: block;
+}
 
-    .button-sousyoku {
-      color: var(--mainColor);
-      background-color: var(--bgColor);
-      padding: 5px;
-      margin: 3px;
-      border-radius: 10px;
-      font-size: 18px;
-      border-color: var(--mainColor);
-      border: 1px solid;
-    }
+html {
+  font-family: "Noto Sans JP";
+  font-size: 16px;
+}
 
-    .button-sousyoku:hover {
-      opacity: 60%;
-    }
+#buttons {
+  text-align: center;
+}
 
-    .button-sousyoku:active {
-      opacity: 100%;
-    }
+.button-sousyoku {
+  color: var(--bgColor);
+  background-color: var(--mainColor);
+  padding: 8px;
+  margin: 3px;
+  border-radius: 22px;
+  font-size: 1em;
+  border-color: var(--bgColor);
+  border: none;
+  opacity: 80%;
+  cursor: pointer;
+}
 
-    .button-select {
-      color: var(--mainColor);
-      background-color: var(--bgColor);
-      border-color: var(--mainColor);
-      padding: 10px;
-      border: 2px solid;
-      margin: 3px;
-      border-radius: 15px;
-      font-size: 2vw;
-      opacity: 100%;
-      box-shadow: none;
-    }
+.button-sousyoku:hover {
+  opacity: 60%;
+}
 
-    .button-select:disabled {
-      opacity: 35%;
-    }
+.button-sousyoku-pa:hover {
+  opacity: 60%;
+}
 
-    .tempo {
-      zoom: 1;
-      -moz-transform: scale(1);
-      background-color: var(--bgColor);
-      color: var(--mainColor);
-      font-family: 'Lato'
-    }
+.button-sousyoku-pa {
+  background-color: var(--bgColor);
+  padding: 3px;
+  margin: 2px;
+  border-radius: 22px;
+  border-color: var(--mainColor);
+  border: 1px solid;
+  opacity: 80%;
+  cursor: pointer;
+}
 
-    .timer-contents {
-      font-size: 16vw;
-      text-align: center;
-      padding: 1rem;
-      background-color: var(--bgColor);
-    }
+.button-sousyoku:active {
+  opacity: 100%;
+}
 
-    .timer-contents-a {
-      font-size: 8vw;
-      text-align: center;
-    }
+.button-select {
+  color: var(--mainColor);
+  background-color: var(--bgColor);
+  border-color: var(--mainColor);
+  padding: 10px;
+  border: 2px solid;
+  margin: 3px;
+  border-radius: 30px;
+  font-size: 2vw;
+  opacity: 100%;
+  box-shadow: none;
+}
 
-    .timer-contents-b {
-      font-size: 24px;
-      text-align: center;
-      color: var(--mainColor);
-      padding: 5px;
-      margin: 3px;
-    }
+.button-select:disabled {
+  opacity: 35%;
+}
 
-    .ranges {
-      width: auto;
-      height: auto;
-      appearance: none;
-      height: 2px;
-      border-radius: 2px;
-      background-color: var(--mainColor);
-      margin: 3px;
-    }
+.tempo {
+  zoom: 1;
+  -moz-transform: scale(1);
+  background-color: var(--bgColor);
+  color: var(--mainColor);
+}
 
-    .ranges::-webkit-slider-thumb {
-      appearance: none;
-      background-color: var(--mainColor);
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      vertical-align: middle;
-    }
+.timer-contents {
+  font-size: 16vw;
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--bgColor);
+}
 
-    .a-contents {
-      color: var(--mainColor);
-      border-radius: 4px;
-      margin: 8px;
-      opacity: 100%;
-    }
+.timer-contents-a {
+  font-size: 8vw;
+  text-align: center;
+}
 
-    .date-contents {
-      font-size: 3vw;
-      cursor: pointer;
-    }
+.timer-contents-b {
+  font-size: 24px;
+  text-align: center;
+  color: var(--mainColor);
+  padding: 5px;
+  margin: 3px;
+}
 
-    .input-tag {
-      vertical-align: middle;
-      width: 30px;
-      color: var(--mainColor);
-      background-color: var(--bgColor);
-      border-radius: 4px;
-      border: 2px solid;
-      padding: 2px;
-      margin: 2px;
-    }
+.ranges {
+  width: 70vw;
+  max-width: 300px;
+  height: auto;
+  appearance: none;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--mainColor);
+  margin: 3px;
+}
 
-    .svg-settings {
-      height: 20px;
-      z-index: 100;
-      position: sticky;
-      top: 0;
-      height: 30px;
-      text-align: center;
-      float: center;
-      order: -1;
-      vertical-align: middle;
-    }
+.ranges::-webkit-slider-thumb {
+  appearance: none;
+  background-color: var(--mainColor);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
 
-    .svg-icon {
-      width: 30px;
-      heigth: 30px;
-      padding: 5px;
-      vertical-align: middle;
-      border: 1px solid;
-      border-color: var(--mainColor);
-      border-radius: 10px;
-      opacity: 100%;
-    }
+.a-contents {
+  border-bottom: 1px solid;
+  border-color: var(--mainColor);
+  color: var(--mainColor);
+  background-color: var(--bgColor);
+  border-radius: 0px;
+  opacity: 100%;
+  width: auto;
+}
 
-    .svg-icon:hover {
-      opacity: 60%;
-    }
+.date-contents {
+  font-size: 3vw;
+  cursor: pointer;
+}
+
+.input-tag {
+  vertical-align: middle;
+  width: 30px;
+  color: var(--mainColor);
+  background-color: var(--bgColor);
+  border-radius: 25px;
+  height: 15px;
+  border: 1px solid;
+  padding: 5px;
+  margin: 2px;
+  text-align: center;
+}
+
+.svg-settings {
+  height: 20px;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  height: 30px;
+  text-align: center;
+  float: center;
+  order: -1;
+  vertical-align: middle;
+}
+
+.lapon {
+  background-color: lime;
+  height: 20px;
+  width: 45px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 3px lime solid;
+  border-radius: 20px;
+}
+
+.svg-icon {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  margin: 3px;
+  vertical-align: middle;
+  border: 1px solid;
+  border-color: var(--mainColor);
+  border-radius: 30px;
+  opacity: 100%;
+}
+
+.svg-icon:hover {
+  opacity: 60%;
+}
+
   </style>
+
 </head>
 
 <body class="tempo">
-  <nav class="DropdownMenu">
-    <ul class="Menu">
-      <li class="Menu-Item" ontouchstart="">
-        <span class="Menu-Item-Label" ontouchstart="">︙</span>
-        <ul class="SubMenu">
-          <li class="SubMenu-Item">
-            <p class="a-contents"><a class="a-contents">Timer Settings</a>
-            <div id="bargroup">
-              <div class="time"><input type="number" id="hour" min="00" max="99" step="1" value="0" class="input-tag">H<input id="hour" type="range" min="00" max="99" step="1" value="0" class="ranges" /></div>
-              <div class="time"><input type="number" id="minute" min="00" max="59" step="1" value="0" class="input-tag">M<input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges" /></div>
-              <div class="time"><input type="number" id="second" min="00" max="59" step="1" value="30" class="input-tag">S<input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges" />
-                </center>
-              </div>
-              </p>
-          </li>
-          <li class="SubMenu-Item">
-            <p class="a-contents">
-              <a class="a-contents">Color settings</a>
-              <input type="color" id="change_bgColor" class="button-sousyoku">
-              <input type="color" id="change_mainColor" class="button-sousyoku">
-              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/w_b.svg" class="svg-icon" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" id="osareta">
-              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_w.svg" class="svg-icon" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')">
-              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/bl_g.svg" class="svg-icon" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')">
-              <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_gr.svg" class="svg-icon" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')">
-            </p>
-          </li>
-          <li class="SubMenu-Item">
-            <p class="a-contents">
-              <a class="a-contents">Custom S.W</a>
-              <button class="button-sousyoku" onclick="changeDisplay()" style="cursor: pointer;">0.000 ↔ 0</button>
-              <button class="button-sousyoku" onclick="changeDisplayR()" style="cursor: pointer;">Lap ON/OFF</button>
-            </p>
-          </li>
-          <li class="SubMenu-Item">
-            <p class="a-contents">
-              <a class="a-contents">Functions</a>
-              <button onclick="window.open('https://nikonosfive.github.io/dev/watch/6_00_0.html', '_blank', 'location=no')" class="button-sousyoku">New Tab</button>
-              <button id="button1" class="button-sousyoku">Full Screen</button>
-              <button id="button2" class="button-sousyoku">Exit Full Screen</button>
-              <script>
-                window.onload = function() {
-                  document.getElementById("osareta").click();
-
-                  function set_color(e) {
-                    document.body.style.setProperty('--' + e.target.id.slice(7), e.target.value);
-                  }
-                  [change_bgColor, change_mainColor].forEach(x => x.addEventListener('change', set_color));
-                  if (COOKIE.get('stopwatch')) {
-                    startButton.click();
-                  }
-                  if (COOKIE.get('timer')) {
-                    start_button.click();
-                  }
-                }
-                window.addEventListener('load', function() {
-                  document.getElementById('button1').addEventListener('click', function() {
-                    document.body.requestFullscreen();
-                  });
-                  document.getElementById('button2').addEventListener('click', function() {
-                    document.exitFullscreen();
-                  });
+  <div class="takami">
+    <div class="area">
+      <div class="dropdown">
+        <script>
+          (function() {
+            document.addEventListener('DOMContentLoaded', function() {
+              const btn = document.getElementById('dropdown__btn');
+              if (btn) {
+                btn.addEventListener('click', function() {
+                  this.classList.toggle('is-open');
                 });
-              </script>
-            </p>
-          </li>
-          <li class="SubMenu-Item">
-            <div class="a-contents-button">
+              }
+            });
+          }());
+        </script>
+        <button class="dropdown__btn" id="dropdown__btn">
+          <div class="3ten">︙</div>
+        </button>
+        <div class="dropdown__body">
+          <ul class="dropdown__list">
+            <li class="dropdown__item">
+              <p class="yohaku"><a>Timer Settings</a></p>
+              <div class="bargroup" id="bargroup">
+                <div class="time"><input type="number" id="hour" min="00" max="99" step="1" value="0" class="input-tag">H<input id="hour" type="range" min="00" max="99" step="1" value="0" class="ranges" /></div>
+                <div class="time"><input type="number" id="minute" min="00" max="59" step="1" value="0" class="input-tag">M<input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges" /></div>
+                <div class="time"><input type="number" id="second" min="00" max="59" step="1" value="30" class="input-tag">S<input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges" />
+                  </center>
+                </div>
+            </li>
+            <li class="dropdown__item">
               <p class="a-contents">
+              <p class="yohaku"><a>Custom Color Settings</a>
+                <input type="color" id="change_bgColor" class="button-sousyoku-pa">
+                <input type="color" id="change_mainColor" class="button-sousyoku-pa">
+              </p>
+            </li>
+            <li class="dropdown__item">
+              <p class="a-contents">
+              <p class="yohaku"><a>Color Settings</a>
+                <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/w_b.svg" class="svg-icon" value="LightMode" onClick="changeColor('#000000', '#FFFFFF')" id="osareta">
+                <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_w.svg" class="svg-icon" value="DarkMode" onClick="changeColor('#FFFFFF', '#000000')">
+                <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/bl_g.svg" class="svg-icon" value="BIOS Mode" onClick="changeColor('#cacaca','#0000ff')">
+                <input type="image" src="https://nikonosfive.github.io/dev/watch/icons/b_gr.svg" class="svg-icon" value="PRO Mode" onClick="changeColor('#00FF00', '#000000')">
+              </p>
+            </li>
+            <li class="dropdown__item">
+              <p class="a-contents">
+              <p class="yohaku">
+                <a>Swap Digits</a>
+                <label class="toggle-button">
+                  <input type="checkbox" onclick="changeDisplay()" style="cursor: pointer; "></input> </label>
+                <a>Lap OFF</a>
+                <label class="toggle-button">
+                  <input type="checkbox" id="lapon" onclick="changeDisplayR()" />
+                </label>
 
+              </p>
+              </p>
+            </li>
+            <li class="dropdown__item">
+              <p class="a-contents">
+              <p class="yohaku"><a>Functions</a>
+                <button onclick="window.open('https://nikonosfive.github.io/dev/watch/6_00_0.html', '_blank', 'location=no')" class="button-sousyoku">New Tab</button>
+                <button id="button1" class="button-sousyoku">Full Screen</button>
+                <button id="button2" class="button-sousyoku">Exit Full Screen</button>
+                <script>
+                  window.onload = function() {
+                    document.getElementById("osareta").click();
+
+                    function set_color(e) {
+                      document.body.style.setProperty('--' + e.target.id.slice(7), e.target.value);
+                    }
+                    [change_bgColor, change_mainColor].forEach(x => x.addEventListener('change', set_color));
+                    if (COOKIE.get('stopwatch')) {
+                      startButton.click();
+                    }
+                    if (COOKIE.get('timer')) {
+                      start_button.click();
+                    }
+                  }
+                  window.addEventListener('load', function() {
+                    document.getElementById('button1').addEventListener('click', function() {
+                      document.body.requestFullscreen();
+                    });
+                    document.getElementById('button2').addEventListener('click', function() {
+                      document.exitFullscreen();
+                    });
+                  });
+                </script>
+              </p>
+              </p>
+            </li>
+            <li class="dropdown__item">
+              <p class="a-contents">
+              <p class="yohaku">
                 <a class="inside">キー操作は他の機能を表示していても反応します。<br>←:Start S.W|↑:Stop S.W|→:Reset S.W|↓:Lap|Q:Start Timer|W:Stop Timer|E:Reset Timer</a><br>
                 <a class="inside">Watch://Timer by TADR, SEI2423</a>
                 <a class="inside">Ver.6.30.0(2024.4.3)</a>
                 <a class="inside" href="https://sites.google.com/view/tadr-tech/blog">Release Notes</a><br>
                 <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a>
               </p>
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <div class="takami">
-    <div class="area">
-      <input type="radio" name="tab_name" id="tab1" tabindex="0">
+              </p>
+            </li>
+            <li class="dropdown__item"></li>
+            <li class="dropdown__item"></li>
+            <li class="dropdown__item"></li>
+          </ul>
+        </div>
+      </div>
+      <input type="radio" name="tab_name" id="tab1" tabindex="0" accesskey="">
       <label class="tab_class" for="tab1" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0.00 0.00 300.00 300.00" class="svg-settings">
           <g stroke-width="2.00" fill="none" stroke-linecap="butt">
             <path stroke=" var(--mainColor)" vector-effect="non-scaling-stroke" d="
