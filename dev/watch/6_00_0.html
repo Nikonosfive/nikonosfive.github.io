@@ -278,8 +278,7 @@ html {
   padding: 3px;
   margin: 2px;
   border-radius: 22px;
-  border-color: var(--mainColor);
-  border: 1px solid;
+  border: 1px var(--mainColor) solid;
   opacity: 80%;
   cursor: pointer;
 }
@@ -333,8 +332,8 @@ html {
 }
 
 .ranges {
-  width: 70vw;
-  max-width: 300px;
+  width: 65vw;
+  max-width: 270px;
   height: auto;
   appearance: none;
   height: 2px;
@@ -361,6 +360,12 @@ html {
   opacity: 100%;
   width: auto;
 }
+
+.touhaba{
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 1.2em;
+      margin: 3px;
+    }
 
 .date-contents {
   font-size: 3vw;
@@ -446,9 +451,9 @@ html {
             <li class="dropdown__item">
               <p class="yohaku"><a>Timer Settings</a></p>
               <div class="bargroup" id="bargroup">
-                <div class="time"><input type="number" id="hour" min="00" max="99" step="1" value="0" class="input-tag">H<input id="hour" type="range" min="00" max="99" step="1" value="0" class="ranges" /></div>
-                <div class="time"><input type="number" id="minute" min="00" max="59" step="1" value="0" class="input-tag">M<input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges" /></div>
-                <div class="time"><input type="number" id="second" min="00" max="59" step="1" value="30" class="input-tag">S<input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges" />
+                <div class="time"><input type="number" id="hour" min="00" max="99" step="1" value="0" class="input-tag"><a class="touhaba">Hou</a><input id="hour" type="range" min="00" max="99" step="1" value="0" class="ranges" /></div>
+                <div class="time"><input type="number" id="minute" min="00" max="59" step="1" value="0" class="input-tag"><a class="touhaba">Min</a><input id="minute" type="range" min="00" max="59" step="1" value="0" class="ranges" /></div>
+                <div class="time"><input type="number" id="second" min="00" max="59" step="1" value="30" class="input-tag"><a class="touhaba">Sec</a><input id="second" type="range" min="00" max="59" step="1" value="30" class="ranges" />
                   </center>
                 </div>
             </li>
