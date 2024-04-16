@@ -8,6 +8,30 @@
   <link rel="manifest" href="https://nikonosfive.github.io/dev/watch/manifest.json" />
   <link rel="apple-touch-icon" href="https://nikonosfive.github.io/dev/watch/logo.ico">
   <script>
+ const registerServiceWorker = async () => {
+  if ("serviceWorker" in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register("/sw.js", {
+        scope: "/",
+      });
+      if (registration.installing) {
+        console.log("Service worker installing");
+      } else if (registration.waiting) {
+        console.log("Service worker installed");
+      } else if (registration.active) {
+        console.log("Service worker active");
+      }
+    } catch (error) {
+      console.error(`Registration failed with ${error}`);
+    }
+  }
+};
+
+// …
+
+registerServiceWorker();
+  </script>
+  <script>
     const COOKIE = new Map(
       document.cookie.split('; ').map(x => {
         return x.split('=');
@@ -303,7 +327,7 @@
     }
 
     .takami {
-      height: 100vh;
+      height: 100svh;
       background-color: var(--bgColor);
     }
 
