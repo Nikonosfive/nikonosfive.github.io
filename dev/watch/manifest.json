@@ -26,8 +26,8 @@
   "start_url": "https://nikonosfive.github.io/dev/watch/6_00_0.html",
   "display": "standalone",
   "lang": "ja-JP",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "related_applications": [ ],
   "prefer_related_applications": false
 }
