@@ -55,16 +55,17 @@ registerServiceWorker();
     }
 
     .dropdown__body {
+              border: 1px solid var(--bgColor);
       display: none;
       width: 80vw;
       max-width: 400px;
       background: var(--bgColor);
       box-shadow: 1px 2px 10px 0px var(--mainColor);
-      border-radius: 20px;
+      border-radius: 1rem;
       overflow: scroll;
       position: absolute;
       top: 13px;
-      right: 30px;
+      right: 3vw;
       height: 90vh;
       max-height: 440px;
     }
@@ -121,15 +122,16 @@ registerServiceWorker();
 
       .dropdown__body {
         display: none;
-        width: calc(100vw - 15px);
-        max-width: 95vw;
+        width: 96vw;
+        max-width: 10000px;
+        border: 1px solid var(--bgColor);
         background: var(--bgColor);
         box-shadow: 1px 2px 10px 0px var(--mainColor);
-        border-radius: 2rem;
+        border-radius: 1rem;
         overflow: scroll;
         position: absolute;
         top: 1rem;
-        right: 0;
+        right: 2vw;
         height: 90vh;
         max-height: calc(80vh - 50px);
         z-index: 97;
@@ -159,7 +161,7 @@ registerServiceWorker();
       .dropdown__btn {
         position: absolute;
         margin-left: auto;
-        margin-right: 0px;
+        margin-right: 2vw;
         z-index: 98;
         display: block;
         background: none;
@@ -227,9 +229,8 @@ registerServiceWorker();
     }
 
     .dropdown {
-      position: fixed;
+      position: sticky;
       top: 10px;
-      right: 10px;
       z-index: 66;
     }
 
@@ -531,7 +532,7 @@ registerServiceWorker();
           }());
         </script>
         <button class="dropdown__btn" id="dropdown__btn">
-          <div class="3ten"><svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 4vh; height: 4vh; ;" xml:space="preserve">
+          <div class="3ten"><svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" style="width: 4vh; height: 4vh; ;" xml:space="preserve">
               <style type="text/css">
                 .st0 {
                   fill: var(--mainColor);
@@ -1096,10 +1097,10 @@ registerServiceWorker();
           <input id="start" type="button" value="start" class="button-select">
           <input id="stop" type="button" value="stop" class="button-select" disabled>
           <input id="reset" type="button" value="reset" class="button-select" disabled>
+                      <input id="rap" type="button" value="lap" class="button-select" style="height: 3rem"disabled>
         </div>
         <center>
           <div id=rapdiv>
-            <input id="rap" type="button" value="lap" class="button-select" disabled>
             <span id="rtime" class="timer-contents-b" style="vertical-align:middle;">00:00:00.000</span>
           </div>
         </center>
