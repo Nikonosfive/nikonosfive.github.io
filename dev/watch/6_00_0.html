@@ -8,28 +8,26 @@
   <link rel="manifest" href="https://nikonosfive.github.io/dev/watch/manifest.json" />
   <link rel="apple-touch-icon" href="https://nikonosfive.github.io/dev/watch/logo.ico">
   <script>
- const registerServiceWorker = async () => {
-  if ("serviceWorker" in navigator) {
-    try {
-      const registration = await navigator.serviceWorker.register("/sw.js", {
-        scope: "/",
-      });
-      if (registration.installing) {
-        console.log("Service worker installing");
-      } else if (registration.waiting) {
-        console.log("Service worker installed");
-      } else if (registration.active) {
-        console.log("Service worker active");
+    const registerServiceWorker = async () => {
+      if ("serviceWorker" in navigator) {
+        try {
+          const registration = await navigator.serviceWorker.register("/sw.js", {
+            scope: "/",
+          });
+          if (registration.installing) {
+            console.log("Service worker installing");
+          } else if (registration.waiting) {
+            console.log("Service worker installed");
+          } else if (registration.active) {
+            console.log("Service worker active");
+          }
+        } catch (error) {
+          console.error(`Registration failed with ${error}`);
+        }
       }
-    } catch (error) {
-      console.error(`Registration failed with ${error}`);
-    }
-  }
-};
-
-// …
-
-registerServiceWorker();
+    };
+    // …
+    registerServiceWorker();
   </script>
   <script>
     const COOKIE = new Map(
@@ -55,7 +53,7 @@ registerServiceWorker();
     }
 
     .dropdown__body {
-              border: 1px solid var(--bgColor);
+      border: 1px solid var(--bgColor);
       display: none;
       width: 80vw;
       max-width: 400px;
@@ -625,10 +623,10 @@ registerServiceWorker();
             <li class="dropdown__item">
               <p class="a-contents">
               <p class="yohaku">
-                <a class="inside">キー操作は他の機能を表示していても反応します。<br>←:Start S.W|↑:Stop S.W|→:Reset S.W|↓:Lap|Q:Start Timer|W:Stop Timer|E:Reset Timer</a><br>
-                <a class="inside">Watch://Timer by TADR, SEI2423</a>
-                <a class="inside">Ver.6.50.0(2024.4.6)</a>
-                <a class="inside" href="https://sites.google.com/view/tadr-tech/blog">Release Notes</a><br>
+                <a class="inside" href="https://sites.google.com/view/tadr-tech/blog/htu">使い方 How to use</a>｜<a class="inside" href="https://sites.google.com/view/tadr-tech/blog">Release Notes</a>
+                <br>
+                <a class="inside">Watch://Timer by TADR, SEI2423</a>｜
+                <a class="inside">Ver.6.50.0(2024.4.6)</a><br>
                 <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a>
               </p>
               </p>
@@ -1097,7 +1095,7 @@ registerServiceWorker();
           <input id="start" type="button" value="start" class="button-select">
           <input id="stop" type="button" value="stop" class="button-select" disabled>
           <input id="reset" type="button" value="reset" class="button-select" disabled>
-                      <input id="rap" type="button" value="lap" class="button-select" style="height: 3rem"disabled>
+          <input id="rap" type="button" value="lap" class="button-select" style="height: 3rem" disabled>
         </div>
         <center>
           <div id=rapdiv>
