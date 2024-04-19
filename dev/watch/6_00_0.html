@@ -40,6 +40,11 @@
     };
   </script>
   <style>
+    
+    html:has(#monospace:checked){
+      font-family: Monospace;
+    }
+    
     .svg-settings {
       height: 20px;
       z-index: 100;
@@ -628,6 +633,9 @@
                 <a class="inside">Watch://Timer by TADR, SEI2423</a>｜
                 <a class="inside">Ver.6.50.0(2024.4.6)</a><br>
                 <a class="inside">音源：</a><a class="inside" href="https://amachamusic.chagasi.com">甘茶の音楽工房様</a>
+                 <input type="radio" name="radioName" id="monospace">
+    <label for="monospace">Monospace</label><input type="radio" name="radioName" id="notosans">
+    <label for="notosans" checked>Default</label>
               </p>
               </p>
             </li>
